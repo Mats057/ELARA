@@ -1,0 +1,141 @@
+<section>
+  <div class="container">
+    <div class="infosSignup">
+      <div class="infos">
+        <h3>CRUD WITH ANGULAR</h3>
+        <div class="desc">
+          <p class="typewriter">Join us and start managing your information.</p>
+          <p class="minDesc">Create a new account to continue.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="signup">
+      <div class="form">
+        <h1>Sign up</h1>
+        <form #signup="ngForm" (ngSubmit)="createAccount(signup)">
+          <div class="row">
+          <div class="input user">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              maxlength="30"
+              required
+              ngModel
+            />
+          </div>
+          <div class="input age">
+            <label for="age">Age</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="13"
+              max="120"
+              placeholder="Enter your age"
+              required
+              ngModel
+            />
+          </div>
+        </div>
+          <div class="row">
+            <div class="input name">
+              <label for="username">First name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your first name"
+                maxlength="30"
+                required
+                ngModel
+              />
+            </div>
+            <div class="input lastName">
+              <label for="lastName">Last name</label>
+              <input
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="Enter your last name"
+                maxlength="30"
+                required
+                ngModel
+              />
+            </div>
+          </div>
+          <div class="input email">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+              ngModel
+              email
+            />
+          </div>
+          <div class="input password">
+            <label for="password">Password</label>
+            <input
+              #passwordInput="ngModel"
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+              ngModel
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            />
+            <p
+              *ngIf="
+                !numberRegex.test(passwordInput.value) && passwordInput.touched
+              "
+            >
+              Must contain at least one number
+            </p>
+            <p
+              *ngIf="
+                !uppercaseRegex.test(passwordInput.value) &&
+                passwordInput.touched
+              "
+            >
+              Must contain at least one uppercase letter
+            </p>
+            <p
+              *ngIf="
+                !lowercaseRegex.test(passwordInput.value) &&
+                passwordInput.touched
+              "
+            >
+              Must contain at least one lowercase letter
+            </p>
+            <p
+              *ngIf="
+                !lengthRegex.test(passwordInput.value) && passwordInput.touched
+              "
+            >
+              Must contain at least 8 or more characters
+            </p>
+          </div>
+          <div *ngIf="error" class="error">
+            <p>{{ error }}</p>
+          </div>
+          <div class="input submit">
+            <button type="submit" class="submit" [disabled]="!signup.valid">
+              Sign up
+            </button>
+            <p class="login">
+              Already have an account?
+              <a (click)="switchRoute('login')">Sign in</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

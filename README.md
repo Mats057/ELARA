@@ -1,27 +1,12 @@
-# CRUDAngular
+<h1>CRUD + Sistema de Login com Angular</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.6.
+<p>Esse sistema de login foi criado com Angular para testar meus conhecimentos no framework, sendo abrangido no projeto rotas, serviços, guards, formulário e mais</p>
 
-## Development server
+<p>O sistema possui um Banco de Dados fictício que utiliza o localStorage, dessa forma o deploy ocorre de forma facilitada aqui no GitHub, entretanto minha ideia é que no futuro eu integre esse sistema com um banco de dados MySQL por meio de APIs no PHP</p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<p>Assim que o projeto ficar pronto, irei disponibilizar abaixo prints e um link de acesso por meio do github pages</p>
 
-## Code scaffolding
+<h3>⌛EM PROCESSO DE CONSTRUÇÃO⌛</h3>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<div><p>Tela de login v1.0<p><img src="./readmeAssets/login.png"></div>
+<div><p>Tela de cadastro v1.0<p><img src="./readmeAssets/cadastro.png"></div>
