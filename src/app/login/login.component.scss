@@ -88,6 +88,10 @@ section {
           font-weight: 200;
         }
       }
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
     }
 
     .login {
@@ -115,11 +119,19 @@ section {
           justify-content: flex-start;
           margin-top: 1rem;
 
-          &.ng-invalid > .submit >button{
+          &.ng-invalid>.submit>button {
             background-color: #535353;
             cursor: not-allowed;
           }
         }
+
+        @media screen and (max-width: 1366px) {
+          width: 75%;
+        }
+        @media screen and (max-width: 768px) {
+          width: 90%;
+        }
+
       }
 
       h1 {
@@ -154,7 +166,7 @@ section {
           font-size: 1rem;
           transition: all 0.2s ease-in-out;
 
-          &.ng-invalid.ng-touched{
+          &.ng-invalid.ng-touched {
             border-bottom: 1px solid red;
           }
 
@@ -164,7 +176,7 @@ section {
           }
         }
 
-        &.password > p{
+        &.password>p {
           font-family: "Poppins", sans-serif;
         }
 
@@ -206,8 +218,12 @@ section {
             }
           }
         }
+        @media screen and (max-width: 456px) {
+          width: 100%;
+        }
       }
-      .error{
+
+      .error {
         color: red;
         background-color: rgba(255, 121, 121, 0.5);
         padding: 1rem;
@@ -216,6 +232,12 @@ section {
         font-size: 1rem;
         margin-bottom: 1rem;
       }
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      justify-content: center;
     }
   }
 }
