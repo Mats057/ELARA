@@ -1,1 +1,23 @@
-<p>home works!</p>
+<app-header></app-header>
+<div class="container">
+  <section class="one">
+    <div class="content">
+        <h1>Winter Promotion</h1>
+        <h2>Get <span>30% off</span> on all winter products</h2>
+        <a href="#" class="btn">Shop Now</a>
+    </div>
+  </section>
+  <section class="two">
+    <div class="content">
+        <h1>Best Choices</h1>
+        <div class="showClothes">
+          <app-clothes-show
+            *ngFor="let cloth of clothes | slice:0:4"
+            [name]="cloth.name"
+            [price]="cloth.price"
+            [image]="cloth.image[0]"
+            [discount]="cloth.discount || 1"></app-clothes-show>
+        </div>
+    </div>
+  </section>
+</div>

@@ -22,6 +22,7 @@ section {
       color: #fff;
       display: flex;
       flex-direction: column;
+      user-select: none;
       box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 
       .infos {
@@ -33,6 +34,10 @@ section {
         margin: 1rem;
         font-family: "Poppins", sans-serif;
         font-weight: 200;
+        &:hover{
+          cursor: pointer;
+          transform: scale(1.01);
+        }
       }
 
       .desc {

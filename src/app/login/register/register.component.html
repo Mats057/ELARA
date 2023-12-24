@@ -2,9 +2,9 @@
   <div class="container">
     <div class="infosSignup">
       <div class="infos">
-        <h3>CRUD WITH ANGULAR</h3>
+        <a routerLink="home" style="text-decoration: none;color: white;"><h3>RETURN TO HOME</h3></a>
         <div class="desc">
-          <p class="typewriter">Join us and start managing your information.</p>
+          <p class="typewriter">Shop at Elara and change your life for the better.</p>
           <p class="minDesc">Create a new account to continue.</p>
         </div>
       </div>
@@ -14,33 +14,6 @@
       <div class="form">
         <h1>Sign up</h1>
         <form #signup="ngForm" (ngSubmit)="createAccount(signup)">
-          <div class="row">
-          <div class="input user">
-            <label for="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Enter your username"
-              maxlength="30"
-              required
-              ngModel
-            />
-          </div>
-          <div class="input age">
-            <label for="age">Age</label>
-            <input
-              type="number"
-              id="age"
-              name="age"
-              min="13"
-              max="120"
-              placeholder="Enter your age"
-              required
-              ngModel
-            />
-          </div>
-        </div>
           <div class="row">
             <div class="input name">
               <label for="username">First name</label>

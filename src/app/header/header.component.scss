@@ -1,0 +1,97 @@
+.container{
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    background-color: rgb(255, 255, 255);
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    
+    &.sticky{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background-color: white;
+        border-bottom: #a1a1a1 1px solid;
+        animation: slideInFromTop 0.5s ease-in-out;
+    }
+
+    .logo{
+        font-size: 2rem;
+        user-select: none;
+    }
+
+    nav{
+        ul{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none;
+            width: 50%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            gap: 1rem;
+
+            li{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                padding: 0;
+
+                a{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0;
+                    padding: 0;
+                    text-decoration: none;
+                    color: black;
+                    font-size: 1.2rem;
+                    font-weight: 200;
+                    transition: all 0.2s ease-in-out;
+
+                    &:hover{
+                        text-decoration: underline;
+                        text-underline-offset: 0.2rem;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .actions{
+        .account{
+            .toggle__option{
+                margin: 0 0.5rem;
+                cursor: pointer;
+                color: black;
+                &:hover{
+                    transition: 0.3s;
+                }
+                &:focus{
+                    color:#535353;
+                }
+            }
+        }
+        }	
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

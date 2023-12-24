@@ -1,15 +1,15 @@
+
 import { Injectable, OnInit } from '@angular/core';
 import { User, UserLogin } from './user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService implements OnInit{
+export class AuthService implements OnInit {
+  db: any = localStorage.getItem('infos');
+  users: User[] = [];
 
-  db:any = localStorage.getItem('infos');
-  users:User[] = [];
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.getUsers();
@@ -25,22 +25,20 @@ export class AuthService implements OnInit{
     localStorage.setItem('infos', this.db);
   }
 
-  createAccount(infos: User){
-    if(this.verifyExits(infos)) {
+  createAccount(infos: User) {
+    if (this.verifyExits(infos)) {
       return '409';
-    }else{
+    } else {
       this.users.push(infos);
       this.updateUsers();
-      return '201'
+      return '201';
     }
   }
 
   verifyExits(infos: User) {
     let result = false;
-    this.users.forEach(user => {
+    this.users.forEach((user) => {
       if (user.email == infos.email) {
-        result = true;
-      }else if(user.username == infos.username) {
         result = true;
       }
     });
@@ -50,7 +48,7 @@ export class AuthService implements OnInit{
   login(infos: UserLogin) {
     this.getUsers();
     let result = false;
-    this.users.forEach(user => {
+    this.users.forEach((user) => {
       if (user.email == infos.email && user.password == infos.password) {
         result = true;
       }
@@ -58,4 +56,15 @@ export class AuthService implements OnInit{
     return result;
   }
 
+  verifyLogin() {
+    const email = localStorage.getItem('email');
+    if (email) {
+      return true;
+    }
+    return false;
+  }
+
+  logout() {
+    localStorage.removeItem('email');
+  }
 }
