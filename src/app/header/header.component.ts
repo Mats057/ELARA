@@ -1,4 +1,4 @@
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../services/auth.service';
 import {
   Component,
   ElementRef,
@@ -7,8 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
-
-import * as feather from 'feather-icons'; // Remove the unused import
+import * as feather from 'feather-icons';
 
 @Component({
   selector: 'app-header',

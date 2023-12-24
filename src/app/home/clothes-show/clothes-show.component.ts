@@ -10,14 +10,14 @@ export class ClothesShowComponent {
   @Input() name: string;
   @Input() price: number;
   @Input() image: string;
-  @Input() description: string;
+  @Input() id: string;
   @Input() discount: number;
 
   constructor() {
     this.name = '';
     this.price = 0;
     this.image = '';
-    this.description = '';
+    this.id = '';
     this.discount = 1;
   }
 

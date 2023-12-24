@@ -1,6 +1,7 @@
 
 import { Injectable, OnInit } from '@angular/core';
-import { User, UserLogin } from './user';
+import { User, UserLogin } from '../login/user';
+
 
 @Injectable({
   providedIn: 'root',

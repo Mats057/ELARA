@@ -1,0 +1,78 @@
+[
+        {
+            "id": 1,
+            "name": "Beige t-shirt with v-bottom",
+            "price": 64.99,
+            "image": ["assets/clothes-img/one.jpg"],
+            "discount": 0.7
+        },
+        {
+            "id": 2,
+            "name": "Open v-neck t-shirt",
+            "price": 55.50,
+            "image": ["assets/clothes-img/two-beige.jpg", "assets/clothes/two-wine.jpg"],
+            "discount": 0.7
+        },
+        {
+            "id": 3,
+            "name": "T-shirt with a large open collar showing the shoulders",
+            "price": 50,
+            "image": ["assets/clothes-img/three.jpg"],
+            "discount": 0.7
+        },
+        {
+            "id": 4,
+            "name": "T-shirt with hole on the shoulder",
+            "price": 50,
+            "image": ["assets/clothes-img/four-1.jpg", "assets/clothes/four-2.jpg"],
+            "discount": 0.7
+        },
+        {
+            "id": 5,
+            "name": "Blouse with wave collar",
+            "price": 80,
+            "image": ["assets/clothes-img/five-1.jpg", "assets/clothes/five-2.jpg"]
+        },
+        {
+            "id": 6,
+            "name": "Male social shirt",
+            "price": 50,
+            "image": ["assets/clothes-img/six.jpg"]
+        },
+        {
+            "id": 7,
+            "name": "T-shirt with lace on the top",
+            "price": 60,
+            "image": ["assets/clothes-img/seven.jpg"]
+        },
+        {
+            "id": 8,
+            "name": "Beige coat",
+            "price": 80,
+            "image": ["assets/clothes-img/eight-1.jpg", "assets/clothes/eight-2.jpg"]
+        },
+        {
+            "id": 9,
+            "name": "Cyan white floral dress",
+            "price": 60,
+            "image": ["assets/clothes-img/nine.jpg"]
+        },
+        {
+            "id": 10,
+            "name": "White Champion T-shirt",
+            "price": 80,
+            "image": ["assets/clothes-img/ten.jpg"]
+        },
+        {
+            "id": 11,
+            "name": "Men's Black Long Sleeve T-Shirt",
+            "price": 40,
+            "image": ["assets/clothes-img/eleven.jpg"]
+        },
+        {
+            "id": 12,
+            "name": "Flannel dress with buttons",
+            "price": 80,
+            "image": ["assets/clothes-img/twelve-gray.jpg", "assets/clothes/twelve-wine.jpg"]
+        }
+]
