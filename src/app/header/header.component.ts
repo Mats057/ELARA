@@ -17,6 +17,7 @@ import * as feather from 'feather-icons';
 export class HeaderComponent implements OnInit {
   logged: boolean = false;
   @ViewChild('header') header!: ElementRef;
+  @ViewChild('toggleIcon') toggleIcon!: ElementRef;
 
   constructor(private authVerify: AuthService, private router: Router) {
     this.header = new ElementRef('header');
@@ -47,5 +48,16 @@ export class HeaderComponent implements OnInit {
       .then(() => {
         this.router.navigate(['/home']);
       });
+  }
+
+  toggleMenu() {
+    this.header.nativeElement.classList.toggle('active');
+    let svg = this.toggleIcon.nativeElement.children;
+    svg[0].classList.toggle('hidden');
+    svg[1].classList.toggle('hidden');
+    if (svg[0].classList.contains('hidden')) {
+      svg[1].classList.remove('hidden');
+    }
+    console.log(svg);
   }
 }
