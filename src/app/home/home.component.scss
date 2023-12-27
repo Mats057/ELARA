@@ -47,13 +47,22 @@
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
-
 .showClothes{
-    margin: 2rem 15%;
+    margin:0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2rem;
+    justify-items: center;
+
+    @media screen and (max-width: 1200px){
+        grid-template-columns: repeat(3, 1fr);
+        
+    }
+    @media screen and (max-width: 600px){
+        grid-template-columns: repeat(2, 1fr);   
+    }
 }
+
 
 .two{
     width: 100%;
@@ -67,9 +76,10 @@
         h1{
             font-size: 3rem;
             font-weight: 600;
+            margin-bottom: 2rem;
         }
         .btn{
-            margin-bottom: 2rem;
+            margin: 2rem;
             font-size: 1.5rem;
             background-color: black;
             color: white;
@@ -79,3 +89,35 @@
         }
     }
 }
+
+swiper-container {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    @media screen and (max-width: 1456px){
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+}
+swiper-slide {
+       padding: 1rem;
+       background: #fff;
+       display: -webkit-box;
+       display: -ms-flexbox;
+       display: -webkit-flex;
+       display: flex;
+       -webkit-box-pack: center;
+       -ms-flex-pack: center;
+       -webkit-justify-content: center;
+       justify-content: center;
+       -webkit-box-align: center;
+       -ms-flex-align: center;
+       -webkit-align-items: center;
+       align-items: center;
+}
+

@@ -49,4 +49,14 @@
             }
         }
     }
+    @media screen and (max-width: 1200px){
+        width: 15rem;
+        
+    }
+    @media screen and (max-width: 768px){
+        width: 10rem;
+        &.bestChoices{
+            width: 15rem;
+        }
+    }
 }

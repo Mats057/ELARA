@@ -1,4 +1,4 @@
-<div class="container">
+<div [ngClass]="['container', classe]" >
   <a [routerLink]="['./clothes', id]" routerLinkActive="router-link-active" >
     <img [src]="image" [alt]="name" />
     <div class="description">

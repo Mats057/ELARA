@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-
 @Component({
   selector: 'app-clothes-show',
   templateUrl: './clothes-show.component.html',
@@ -12,6 +11,7 @@ export class ClothesShowComponent {
   @Input() image: string;
   @Input() id: string;
   @Input() discount: number;
+  @Input() classe: string;
 
   constructor() {
     this.name = '';
@@ -19,6 +19,7 @@ export class ClothesShowComponent {
     this.image = '';
     this.id = '';
     this.discount = 1;
+    this.classe = '';
   }
 
 }
