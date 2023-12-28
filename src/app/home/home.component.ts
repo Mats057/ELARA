@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getData.getClothes().subscribe((data: any) => {
       this.clothes = data;
-      console.log(data);
     });
   }
 

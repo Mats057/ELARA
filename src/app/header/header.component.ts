@@ -1,3 +1,5 @@
+
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { AuthService } from '../services/auth.service';
 import {
   Component,
@@ -9,15 +11,31 @@ import {
 import { Router } from '@angular/router';
 import * as feather from 'feather-icons';
 
+
+const popMenu = trigger('popMenu',[
+  state('inactive', style({
+    transform: 'translateY(-100%)',
+    opacity: 0,
+  })),
+  state('active', style({
+    transform: 'translateY(0)',
+    opacity: 1,
+  })),
+  transition('* => active', animate('700ms ease-in')),
+  transition('active => *', animate('700ms ease-out')),
+  ]);
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  animations: [popMenu],
 })
 export class HeaderComponent implements OnInit {
   logged: boolean = false;
+  menuState: string = 'inactive';
   @ViewChild('header') header!: ElementRef;
   @ViewChild('toggleIcon') toggleIcon!: ElementRef;
+  @ViewChild('mobileHeader') mobileHeader!: ElementRef;
 
   constructor(private authVerify: AuthService, private router: Router) {
     this.header = new ElementRef('header');
@@ -50,14 +68,17 @@ export class HeaderComponent implements OnInit {
       });
   }
 
+  /*toggleMenu() {
+
+  }*/
+
   toggleMenu() {
-    this.header.nativeElement.classList.toggle('active');
+    this.menuState = this.menuState === 'active' ? 'inactive' : 'active';
     let svg = this.toggleIcon.nativeElement.children;
     svg[0].classList.toggle('hidden');
     svg[1].classList.toggle('hidden');
     if (svg[0].classList.contains('hidden')) {
       svg[1].classList.remove('hidden');
     }
-    console.log(svg);
   }
 }

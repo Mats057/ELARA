@@ -1,262 +1,257 @@
 section {
-    width: 100vw;
-    height: 100vh;
-    height: 100svh;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-  
-    .container {
-      width: 100%;
+
+    .infosSignup {
+      background: no-repeat center/auto 100% url("../../../assets/background_login.jpg");
       height: 100%;
-      background-color: #fff;
+      width: 25%;
+      min-width: 300px;
+      color: #fff;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-  
-      .infosSignup {
-        background: no-repeat center/auto 100% url("../../../assets/background_login.jpg");
+      flex-direction: column;
+      user-select: none;
+      box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+
+      .infos {
+        backdrop-filter: blur(5px);
         height: 100%;
-        width: 25%;
-        min-width: 300px;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        user-select: none;
-        box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-  
-        .infos {
-          backdrop-filter: blur(5px);
-          height: 100%;
+      }
+
+      h3 {
+        margin: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.01);
         }
-  
-        h3 {
-          margin: 1rem;
-          font-family: "Poppins", sans-serif;
-          font-weight: 200;
-          &:hover{
-            cursor: pointer;
-            transform: scale(1.01);
-          }
-        }
-  
-        .desc {
-          margin: 1rem;
-          font-family: "Poppins", sans-serif;
-          font-weight: 600;
-          font-size: 3rem;
-          margin-top: 48%;
-          margin-right: 2rem;
-  
-          .minDesc {
-            overflow: hidden;
-            /* Ensures the content is not revealed until the animation */
-            border-right: .15em solid orange;
-            /* The typwriter cursor */
-            white-space: nowrap;
-            /* Keeps the content on a single line */
-            margin: 0 auto;
-            /* Gives that scrolling effect as the typing happens */
-            letter-spacing: .08em;
-            /* Adjust as needed */
-            animation:
-              typing 3.5s steps(40, end),
-              blink-caret .75s step-end infinite;
-          }
-  
-          /* The typing effect */
-          @keyframes typing {
-            from {
-              width: 0
-            }
-  
-            to {
-              width: 100%
-            }
-          }
-  
-          /* The typewriter cursor effect */
-          @keyframes blink-caret {
-  
-            from,
-            to {
-              border-color: transparent
-            }
-  
-            50% {
-              border-color: orange;
-            }
-          }
-  
-          .minDesc {
-            font-size: 1.5rem;
-            font-weight: 200;
-          }
-        }
-        @media screen and (max-width: 768px) {
-          display: none;
+      }
+
+      .desc {
+        margin: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 3rem;
+        margin-top: 48%;
+        margin-right: 2rem;
+
+        .minDesc {
+          overflow: hidden;
+          border-right: .15em solid orange;
+          white-space: nowrap;
+          margin: 0 auto;
+          letter-spacing: .08em;
+          animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
         }
 
+        @keyframes typing {
+          from {
+            width: 0
+          }
+
+          to {
+            width: 100%
+          }
+        }
+
+        @keyframes blink-caret {
+          from,
+          to {
+            border-color: transparent
+          }
+
+          50% {
+            border-color: orange;
+          }
+        }
+
+        .minDesc {
+          font-size: 1.5rem;
+          font-weight: 200;
+        }
       }
-  
-      .signup {
-        width: 75%;
-        height: 100%;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .signup {
+      width: 75%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .form {
+        width: 50%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-  
-        .form {
-          width: 50%;
+        justify-content: flex-start;
+
+        form {
+          width: 100%;
+          height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: flex-start;
-  
-          form {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            margin-top: 1rem;
-  
-            &.ng-invalid > .submit >button{
-              background-color: #535353;
-              cursor: not-allowed;
-            }
-          }
-          @media screen and (max-width: 1366px) {
-            width: 75%;
-          }
-          @media screen and (max-width: 968px) {
-            width: 100%;
+          margin-top: 1rem;
+
+          &.ng-invalid > .submit > button {
+            background-color: #535353;
+            cursor: not-allowed;
           }
         }
 
-        .row{
-          width: 70%;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
+        @media screen and (max-width: 1366px) {
+          width: 75%;
+        }
 
-          .input{
-            &.name, &.lastName{
-              width: 49%;
-            }
-          }
-          @media screen and (max-width: 456px) {
-            width: 90%;
-          }
-        }
-  
-        h1 {
-          font-family: "Poppins", sans-serif;
-          font-weight: 600;
-          font-size: 2rem;
-          margin: 1rem;
-        }
-  
-        .input {
-          width: 70%;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: center;
-          margin-bottom: 1rem;
-  
-          label {
-            font-family: "Poppins", sans-serif;
-            font-weight: 300;
-            font-size: 1rem;
-          }
-  
-          input {
-            width: 100%;
-            height: 2rem;
-            border: none;
-            border-bottom: 1px solid #000;
-            outline: none;
-            font-family: "Poppins", sans-serif;
-            font-weight: 300;
-            font-size: 1rem;
-            transition: all 0.2s ease-in-out;
-  
-            &.ng-invalid.ng-touched{
-              border-bottom: 1px solid red;
-            }
-  
-            &:focus {
-              border-bottom: 1px solid #979797;
-              transition: all 0.2s ease-in-out;
-            }
-          }
-  
-          &.password > p{
-            font-family: "Poppins", sans-serif;
-          }
-  
-          .submit {
-            width: 100%;
-            height: 2rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #000;
-            color: #fff;
-            font-family: "Poppins", sans-serif;
-            font-weight: 300;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-  
-            &:hover {
-              background-color: #535353;
-              color: #ffffff;
-            }
-  
-          }
-  
-          .login {
-            font-family: "Poppins", sans-serif;
-            font-weight: 300;
-            font-size: 1rem;
-  
-  
-            a {
-              text-decoration: underline;
-              font-family: "Poppins", sans-serif;
-              color: #000;
-              cursor: pointer;
-              transition: all 0.2s ease-in-out;
-  
-              &:hover {
-                color: #535353;
-              }
-            }
-          }
-          @media screen and (max-width: 456px) {
-            width: 90%;
-          }
-        }
-        
-        .error{
-          color: red;
-          background-color: rgba(255, 121, 121, 0.5);
-          padding: 1rem;
-          font-family: "Poppins", sans-serif;
-          font-weight: 300;
-          font-size: 1rem;
-          margin-bottom: 1rem;
-        }
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 968px) {
           width: 100%;
         }
       }
-      @media screen and (max-width: 768px) {
+
+      .row {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .input {
+          &.name,
+          &.lastName {
+            width: 49%;
+          }
+        }
+
+        @media screen and (max-width: 456px) {
+          width: 90%;
+        }
+      }
+
+      h1 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 2rem;
+        margin: 1rem;
+      }
+
+      .input {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: center;
+        margin-bottom: 1rem;
+
+        label {
+          font-family: "Poppins", sans-serif;
+          font-weight: 300;
+          font-size: 1rem;
+        }
+
+        input {
+          width: 100%;
+          height: 2rem;
+          border: none;
+          border-bottom: 1px solid #000;
+          outline: none;
+          font-family: "Poppins", sans-serif;
+          font-weight: 300;
+          font-size: 1rem;
+          transition: all 0.2s ease-in-out;
+
+          &.ng-invalid.ng-touched {
+            border-bottom: 1px solid red;
+          }
+
+          &:focus {
+            border-bottom: 1px solid #979797;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+
+        &.password > p {
+          font-family: "Poppins", sans-serif;
+        }
+
+        .submit {
+          width: 100%;
+          height: 2rem;
+          border: none;
+          border-radius: 5px;
+          background-color: #000;
+          color: #fff;
+          font-family: "Poppins", sans-serif;
+          font-weight: 300;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            background-color: #535353;
+            color: #ffffff;
+          }
+        }
+
+        .login {
+          font-family: "Poppins", sans-serif;
+          font-weight: 300;
+          font-size: 1rem;
+
+          a {
+            text-decoration: underline;
+            font-family: "Poppins", sans-serif;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+              color: #535353;
+            }
+          }
+        }
+
+        @media screen and (max-width: 456px) {
+          width: 90%;
+        }
+      }
+
+      .error {
+        color: red;
+        background-color: rgba(255, 121, 121, 0.5);
+        padding: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
       }
     }
+
+    @media screen and (max-width: 768px) {
+      justify-content: center;
+    }
   }
+}

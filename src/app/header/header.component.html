@@ -1,40 +1,59 @@
 <header #header>
-    <div class="logo">ELARA</div>
-    <nav>
-        <ul>
-            <li><a routerLink="home">HOME</a></li>
-            <li><a routerLink="products">PRODUCTS</a></li>
-            <li><a routerLink="about">ABOUT</a></li>
-            <li><a routerLink="contact">CONTACT</a></li>
-        </ul>
-    </nav>
-    <div class="actions">
-        <a routerLink="/login" *ngIf="!logged" title="Sign-in"><i data-feather="user" ></i></a>
-        <div class="account" *ngIf="logged">
-            <a routerLink="/account/settings" class="toggle__option" title="My Account"><i data-feather="user"></i></a>
-            <a (click)="logout()" class="toggle__option" title="Log-out"><i  data-feather="log-out"></i></a>
-        </div>
+  <div class="logo">ELARA</div>
+  <nav>
+    <ul>
+      <li><a routerLink="home">HOME</a></li>
+      <li><a routerLink="products">PRODUCTS</a></li>
+      <li><a routerLink="about">ABOUT</a></li>
+      <li><a routerLink="contact">CONTACT</a></li>
+    </ul>
+  </nav>
+  <div class="actions">
+    <a routerLink="/login" *ngIf="!logged" title="Sign-in"
+      ><i data-feather="user"></i
+    ></a>
+    <div class="account" *ngIf="logged">
+      <a
+        routerLink="/account/settings"
+        class="toggle__option"
+        title="My Account"
+        ><i data-feather="user"></i
+      ></a>
+      <a (click)="logout()" class="toggle__option" title="Log-out"
+        ><i data-feather="log-out"></i
+      ></a>
     </div>
-    <div class="toggle" #toggleIcon (click)="toggleMenu()">
-        <i data-feather="menu"></i>
-        <i data-feather="x" class="hidden"></i>
-    </div>
-    <div class="mobile-header">
-        <div class="actions">
-            <a routerLink="/login" *ngIf="!logged" title="Sign-in"><i data-feather="user" ></i></a>
-            <div class="account" *ngIf="logged">
-                <a routerLink="/account/settings" class="toggle__option" title="My Account"><i data-feather="user"></i></a>
-                <a (click)="logout()" class="toggle__option" title="Log-out"><i  data-feather="log-out"></i></a>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a routerLink="home">HOME</a></li>
-                <li><a routerLink="products">PRODUCTS</a></li>
-                <li><a routerLink="about">ABOUT</a></li>
-                <li><a routerLink="contact">CONTACT</a></li>
-            </ul>
-        </nav>
-    </div>
+  </div>
+  <div class="toggle" #toggleIcon (click)="toggleMenu()">
+    <i data-feather="menu"></i>
+    <i data-feather="x" class="hidden"></i>
+  </div>
 </header>
-
+<div class="mobile-header" #mobileHeader [@popMenu]="menuState">
+  <nav class="mobile-actions">
+    <ul>
+      <li *ngIf="!logged">
+        <a routerLink="/login" title="Sign-in" class="toggle__option"
+          ><i data-feather="user"></i>SIGN-IN</a
+        >
+      </li>
+      <li *ngIf="logged">
+        <a
+          routerLink="/account/settings"
+          class="toggle__option"
+          title="My Account"
+          ><i data-feather="user"></i>MY ACCOUNT</a
+        >
+      </li>
+      <li *ngIf="logged">
+        <a (click)="logout()" class="toggle__option" title="Log-out"
+          ><i data-feather="log-out"></i>LOG-OUT</a
+        >
+      </li>
+      <li><a routerLink="home" class="toggle__option"><i data-feather="home"></i>HOME</a></li>
+      <li><a routerLink="products" class="toggle__option">PRODUCTS</a></li>
+      <li><a routerLink="about" class="toggle__option">ABOUT</a></li>
+      <li><a routerLink="contact" class="toggle__option">CONTACT</a></li>
+    </ul>
+  </nav>
+</div>
