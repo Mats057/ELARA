@@ -52,14 +52,16 @@ header {
                     height: 100%;
                     display: flex;
                     flex-direction: row;
+                    user-select: none;
                     align-items: center;
+                    cursor: pointer;
                     justify-content: center;
                     margin: 0;
                     padding: 0;
                     text-decoration: none;
                     color: black;
                     font-size: 1.2rem;
-                    font-weight: 200;
+                    font-weight: 300;
                     transition: all 0.2s ease-in-out;
 
                     &:hover {
@@ -144,6 +146,10 @@ nav,
         
         ul{
             list-style: none;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 1rem;
+            margin:1rem;
         }
 
         .toggle__option {

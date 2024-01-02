@@ -10,6 +10,7 @@ import { SwiperOptions } from 'swiper/types';
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
+
   showAll: boolean = false;
   clothes: any[] = [];
 

@@ -1,13 +1,13 @@
 <app-header></app-header>
 <div class="container">
-  <section class="one">
+  <section class="one" id="home">
     <div class="content">
       <h1>Winter Promotion</h1>
       <h2>Get <span>30% off</span> on all winter products</h2>
       <a href="#" class="btn">Shop Now</a>
     </div>
   </section>
-  <section class="two">
+  <section class="two" id="products">
     <div class="content">
       <h1>Best Choices</h1>
       <swiper-container appSwiper #swiper [config]="swiperConfig" (slidechange)="slideChange($event)">
