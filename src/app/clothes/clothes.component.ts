@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ClothesService } from '../services/clothes.service';
 import { SwiperOptions } from 'swiper/types';
+import * as feather from 'feather-icons';
 
 @Component({
   selector: 'app-clothes',
@@ -16,6 +17,11 @@ export class ClothesComponent {
   slideChange(swiper: any) {
     this.index = swiper.detail[0].activeIndex;
   }
+
+  ngAfterViewInit() {
+    feather.replace();
+  }
+
   index = 0;
 
   swiperConfig: SwiperOptions = {

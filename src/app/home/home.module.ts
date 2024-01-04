@@ -5,10 +5,12 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { HeaderComponent } from '../header/header.component';
-import { ClothesShowComponent } from './clothes-show/clothes-show.component';
+import { ClothesShowComponent } from './main/clothes-show/clothes-show.component';
 import { FooterComponent } from '../footer/footer.component';
 import { ClothesComponent } from '../clothes/clothes.component'
 import { SwiperDirective } from '../shared/swiper.directive';
+import { AboutComponent } from '../about/about.component';
+import { MainComponent } from './main/main.component';
 
 register()
 
@@ -19,7 +21,9 @@ register()
     ClothesShowComponent,
     FooterComponent,
     ClothesComponent,
-    SwiperDirective
+    SwiperDirective,
+    AboutComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,

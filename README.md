@@ -1,4 +1,4 @@
-<h1>CRUD + Sistema de Login com Angular</h1>
+<h1>E-Commerce with Angular</h1>
 
 <p>Esse sistema de login foi criado com Angular para testar meus conhecimentos no framework, sendo abrangido no projeto rotas, serviços, guards, formulário e mais</p>
 
