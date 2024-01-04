@@ -13,3 +13,21 @@
     -moz-box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar{
+    width: 0.5rem;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.699);
+    border-radius: 10px;
+  }

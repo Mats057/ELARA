@@ -30,7 +30,7 @@
         >VIEW ALL</a
       >
     </div>
-    <div class="showClothes" *ngIf="showAll">
+    <div class="showClothes hidden" #showAll>
       <app-clothes-show
         *ngFor="let cloth of clothes"
         [id]="cloth.id"

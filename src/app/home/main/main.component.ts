@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 import { ClothesService } from '../../services/clothes.service';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
@@ -9,9 +9,9 @@ import { SwiperOptions } from 'swiper/types';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit, AfterViewInit{
-
   @ViewChild('swiper') swiper!: ElementRef<SwiperContainer>;
   @ViewChild('viewAll') productsBtn!: ElementRef;
+  @ViewChild('showAll') showAllDiv!: ElementRef;
 
   showAll: boolean = false;
   clothes: any[] = [];
@@ -33,6 +33,7 @@ export class MainComponent implements OnInit, AfterViewInit{
 
   showAllClothes(e: any) {
     this.showAll = !this.showAll;
+    this.showAllDiv.nativeElement.classList.toggle('hidden');
     e.innerHTML = this.showAll ? 'SHOW LESS' : 'VIEW ALL';
   }
 
@@ -62,6 +63,7 @@ export class MainComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit() {
     this.swiper.nativeElement.swiper.activeIndex = this.index;
+    
   }
 
   slideChange(swiper: any) {

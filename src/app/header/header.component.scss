@@ -75,19 +75,16 @@ header {
     }
 
     .actions {
-        .account {
-            .toggle__option {
-                margin: 0 0.5rem;
-                cursor: pointer;
-                color: black;
+        .toggle__option {
+            margin: 0 0.5rem;
+            cursor: pointer;
+            color: black;
+            &:hover {
+                transition: 0.3s;
+            }
 
-                &:hover {
-                    transition: 0.3s;
-                }
-
-                &:focus {
-                    color: #535353;
-                }
+            &:focus {
+                color: #535353;
             }
         }
     }

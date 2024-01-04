@@ -10,6 +10,7 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -94,10 +95,16 @@ export class HeaderComponent implements OnInit {
   scrollTo(element: any) {
     element = document.getElementById(element);
     console.log(element.offsetTop);
-    if(element.offsetTop > 80) {
+    if (element.offsetTop > 80) {
       this.header.nativeElement.classList.add('sticky');
-    };
-    element.scrollIntoView({ behavior: 'smooth' });
-    this.toggleMenu();
+      element.scrollIntoView({ behavior: 'smooth' });
+      this.toggleMenu();
+    } else {
+      this.scrollToTop();
+    }
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
