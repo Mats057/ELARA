@@ -5,7 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import {
   Component,
   ElementRef,
@@ -60,6 +60,7 @@ export class HeaderComponent implements OnInit {
 
   ngAfterViewInit() {
     feather.replace();
+    this.scrollToTop();
   }
 
   @HostListener('window:scroll')

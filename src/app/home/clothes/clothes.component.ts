@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ClothesService } from '../services/clothes.service';
+import { ClothesService } from '../../services/clothes.service';
 import { SwiperOptions } from 'swiper/types';
 import * as feather from 'feather-icons';
 

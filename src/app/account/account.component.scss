@@ -1,0 +1,83 @@
+.container{
+    box-shadow: 0 0 10px #ccc;
+    margin: 0 auto;
+    min-height: calc(100vh - 10rem);
+    min-height: calc(100svh - 10rem);
+    display: flex;
+    flex-direction: column;
+
+    section{
+        padding: 2rem 15%;
+        h1{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        div{
+            display: flex;
+            gap:  1.5rem;
+            aside{
+                background-color: #f4f4f4;
+                padding: 1rem;
+                border-radius: 5px;
+                box-shadow: 0 0 5px #ccc;
+                width: 20%;
+                min-height: 60svh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+
+                ul{
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                    li{
+                        a{
+                            text-decoration: none;
+                            color: black;
+                            font-size: 1rem;
+                            font-weight: 500;
+                            cursor: pointer;
+                            user-select: none;
+                            display: flex;
+                            width: 100%;
+                            padding: 0.5rem;
+                            border-radius: 5px;
+                            transition: all 0.2s ease-in-out;
+                            &:hover{
+                                background-color: #b3b3b3; 
+                            }
+                            &.active{
+                                background-color: #b3b3b3bd;
+                                border-left: #000000 3px solid;
+                            }
+                        }
+                    }
+                
+                }
+
+                ul:last-child{
+                    li{
+                        a{
+                            color: #ff3c3c;
+
+                            &:hover{
+                                background-color: #ff3c3c;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            main{
+                background-color: #f4f4f4;
+                padding: 2rem;
+                border-radius: 5px;
+                box-shadow: 0 0 5px #ccc;
+                width: 80%;
+            }
+    
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<div class="container">
+    <section>
+        <h1>General Settings</h1>
+        <div>
+            <aside>
+                <ul>
+                    <li><a [routerLink]="['./']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Account</a></li>
+                    <li><a [routerLink]="['./security']" routerLinkActive="active" >Security</a></li>
+                    <li><a>Notifications</a></li>
+                    <li><a>Billing</a></li>
+                    <li><a>Shipping</a></li>
+                    <li><a>Orders</a></li>
+                </ul>
+                <ul>
+                    <li><a>Sign Out</a></li>
+                    <li><a>Delete Account</a></li>
+                </ul>
+            </aside>
+            <main>
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+    </section>
+</div>
