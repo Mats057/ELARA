@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild, OnInit, Output, EventE
 import { ClothesService } from '../../services/clothes.service';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
+import { Clothes } from 'src/app/shared/clothes';
 
 @Component({
   selector: 'app-main',
@@ -14,12 +15,14 @@ export class MainComponent implements OnInit, AfterViewInit{
   @ViewChild('showAll') showAllDiv!: ElementRef;
 
   showAll: boolean = false;
-  clothes: any[] = [];
+  clothes: Clothes[] = [];
 
   constructor(private getData: ClothesService) {}
 
   ngOnInit() {
-    this.getData.getClothes().subscribe((data: any) => {
+    this.getData.getClothes()
+    .subscribe(data => {
+      console.log(data);
       this.clothes = data;
     });
   }

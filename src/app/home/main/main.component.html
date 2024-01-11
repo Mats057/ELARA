@@ -20,7 +20,7 @@
             [id]="cloth.id"
             [name]="cloth.name"
             [price]="cloth.price"
-            [image]="cloth.image[0]"
+            [image]="cloth.images[0].path"
             [discount]="cloth.discount || 1"
             classe="bestChoices"
           ></app-clothes-show>
@@ -36,7 +36,7 @@
         [id]="cloth.id"
         [name]="cloth.name"
         [price]="cloth.price"
-        [image]="cloth.image[0]"
+        [image]="cloth.images[0].path"
         [discount]="cloth.discount || 1"
       ></app-clothes-show>
     </div>

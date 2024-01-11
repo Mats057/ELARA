@@ -9,7 +9,7 @@ export class ClothesShowComponent {
   @Input() name: string;
   @Input() price: number;
   @Input() image: string;
-  @Input() id: string;
+  @Input() id: number;
   @Input() discount: number;
   @Input() classe: string;
 
@@ -17,7 +17,7 @@ export class ClothesShowComponent {
     this.name = '';
     this.price = 0;
     this.image = '';
-    this.id = '';
+    this.id = 0;
     this.discount = 1;
     this.classe = '';
   }
