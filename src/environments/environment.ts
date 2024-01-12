@@ -1,3 +1,3 @@
 export const environment = {
-    API: 'http://localhost/elara-API/',
+    API: 'http://localhost/CRUD_Angular/elara-API/',
 };

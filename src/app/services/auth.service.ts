@@ -1,68 +1,77 @@
-
 import { Injectable, OnInit } from '@angular/core';
 import { User, UserLogin } from '../shared/user';
-
+import { HttpClient, HttpEvent, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { map, take, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService implements OnInit {
-  db: any = localStorage.getItem('infos');
+  private readonly API = environment.API;
   users: User[] = [];
+  headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+  });
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.getUsers();
-  }
+  ngOnInit(): void {}
 
   getUsers() {
-    this.db = localStorage.getItem('infos');
-    this.users = JSON.parse(this.db);
+    return this.http.get<User[]>(`${this.API}listUsers.php}`);
   }
 
   updateUsers() {
-    this.db = JSON.stringify(this.users);
-    localStorage.setItem('infos', this.db);
+    //this.db = JSON.stringify(this.users);
+    //localStorage.setItem('infos', this.db);
   }
 
   createAccount(infos: User) {
-    if (this.verifyExits(infos)) {
-      return '409';
-    } else {
-      this.users.push(infos);
-      this.updateUsers();
-      return '201';
-    }
+    let data = JSON.stringify(infos);
+    console.log(data);
+    return this.http
+      .post(`${this.API}createUser.php`, data, { headers: this.headers })
+      .pipe(take(1));
   }
 
-  verifyExits(infos: User) {
-    let result = false;
-    this.users.forEach((user) => {
-      if (user.email == infos.email) {
-        result = true;
-      }
+  verifyToken(token: string) {
+    if (token == null) {
+      return false;
+    }
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token
     });
-    return result;
+    this.http.post(`${this.API}verifyToken.php`, null, { headers: headers })
+      .pipe(take(1))
+      .subscribe({
+        next: (data: any) => {
+          if (data['message'] == 'Acesso permitido!') {
+            return true;
+          } else {
+            return false;
+          }
+        },
+      });
+      return false;
   }
 
   login(infos: UserLogin) {
-    this.getUsers();
-    let result = false;
-    this.users.forEach((user) => {
-      if (user.email == infos.email && user.password == infos.password) {
-        result = true;
-      }
-    });
-    return result;
-  }
-
-  verifyLogin() {
-    const email = localStorage.getItem('email');
-    if (email) {
-      return true;
-    }
-    return false;
+    let data = JSON.stringify(infos);
+    return this.http
+      .post(`${this.API}verifyAccess.php`, data, { headers: this.headers, observe: 'response' })
+      .pipe(
+        tap({
+          next: (data: HttpResponse<any>) => {
+            if (data.body['message'] == 'Login realizado com sucesso!') {
+              let token:string = ((data as HttpResponse<any>).headers.get('Authorization'))!;
+              localStorage.setItem('token', token);
+            }
+          },
+        }),
+        take(1)
+      );
   }
 
   logout() {

@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.logged = this.authVerify.verifyLogin();
+    //this.logged = this.authVerify.verifyLogin();
   }
 
   ngAfterViewInit() {

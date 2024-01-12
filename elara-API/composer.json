@@ -1,0 +1,15 @@
+{
+    "name": "elara/api",
+    "description": "API do projeto ELARA",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mats057",
+            "email": "119885089+Mats057@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    }
+}

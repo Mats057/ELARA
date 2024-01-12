@@ -23,12 +23,10 @@ export class RegisterComponent {
   }
 
   createAccount(signupForm: NgForm) {
-    if(this.auth.createAccount(signupForm.value) == '201'){
-      this.router.navigate(['login']);
-    }else if(this.auth.createAccount(signupForm.value) == '409'){
-      this.error = 'Email ou username já cadastrado';
-    }
-
+    this.auth.createAccount(signupForm.value)
+      .subscribe(
+        (data: any) => data['message'] == 'Usuário criado com sucesso!' ? this.switchRoute('login') : this.error = data['message'],
+      );
   }
 
 }
