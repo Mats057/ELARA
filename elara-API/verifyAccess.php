@@ -1,4 +1,5 @@
 <?php
+include_once 'default.php';
 include_once 'dbConnect.php';
 header("Access-Control-Expose-Headers: Authorization");
 

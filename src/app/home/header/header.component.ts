@@ -16,6 +16,7 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import * as feather from 'feather-icons';
+import { firstValueFrom } from 'rxjs';
 
 const popMenu = trigger('popMenu', [
   state(
@@ -55,10 +56,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.logged = this.authVerify.verifyLogin();
+    
   }
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
     feather.replace();
     this.scrollToTop();
   }
@@ -70,6 +71,21 @@ export class HeaderComponent implements OnInit {
     } else {
       this.header.nativeElement.classList.remove('sticky');
     }
+  }
+
+  async verifyLogin() {
+    if (
+      localStorage.getItem('token') != null &&
+      localStorage.getItem('token') != undefined
+    ) {
+      const response = await firstValueFrom(
+        this.authVerify.verifyToken(localStorage.getItem('token')!)
+      );
+      if ((response as any)['message'] == 'Acesso permitido!') {
+        return true;
+      }
+    }
+    return false;
   }
 
   logout() {

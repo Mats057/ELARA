@@ -36,25 +36,11 @@ export class AuthService implements OnInit {
   }
 
   verifyToken(token: string) {
-    if (token == null) {
-      return false;
-    }
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': token
     });
-    this.http.post(`${this.API}verifyToken.php`, null, { headers: headers })
-      .pipe(take(1))
-      .subscribe({
-        next: (data: any) => {
-          if (data['message'] == 'Acesso permitido!') {
-            return true;
-          } else {
-            return false;
-          }
-        },
-      });
-      return false;
+    return this.http.post(`${this.API}verifyToken.php`, null, { headers: headers })
   }
 
   login(infos: UserLogin) {

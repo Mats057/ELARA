@@ -1,4 +1,5 @@
 <?php
+include_once 'default.php';
 include_once 'dbConnect.php';
 
 $data = json_decode(file_get_contents("php://input"));

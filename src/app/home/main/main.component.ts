@@ -22,7 +22,6 @@ export class MainComponent implements OnInit, AfterViewInit{
   ngOnInit() {
     this.getData.getClothes()
     .subscribe(data => {
-      console.log(data);
       this.clothes = data;
     });
   }
