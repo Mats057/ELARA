@@ -61,6 +61,6 @@ export class AuthService implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('email');
+    localStorage.removeItem('token');
   }
 }

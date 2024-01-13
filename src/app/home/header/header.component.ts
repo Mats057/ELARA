@@ -43,7 +43,7 @@ const popMenu = trigger('popMenu', [
   animations: [popMenu],
 })
 export class HeaderComponent implements OnInit {
-  logged: boolean = false;
+  logged: Promise<boolean> = this.verifyLogin();
   menuState: string = 'inactive';
   @ViewChild('header') header!: ElementRef;
   @ViewChild('toggleIcon') toggleIcon!: ElementRef;
@@ -55,8 +55,7 @@ export class HeaderComponent implements OnInit {
     this.header = new ElementRef('header');
   }
 
-  ngOnInit() {
-    
+  ngOnInit(){
   }
 
   async ngAfterViewInit() {

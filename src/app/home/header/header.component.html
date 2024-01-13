@@ -9,14 +9,22 @@
     </ul>
   </nav>
   <div class="actions">
-    <a routerLink="/login" *ngIf="!logged" class="toggle__option" title="Sign-in"
+    <a
+      routerLink="/login"
+      [ngClass]="{
+        toggle__option: true,
+        hidden: logged | async
+      }"
+      title="Sign-in"
       ><i data-feather="user"></i
     ></a>
-    <div class="account" *ngIf="logged">
-      <a
-        routerLink="./account"
-        class="toggle__option"
-        title="My Account"
+    <div
+      class="account"
+      [ngClass]="{
+        hidden: (logged | async) === false,
+      }"
+    >
+      <a routerLink="./account" class="toggle__option" title="My Account"
         ><i data-feather="user"></i
       ></a>
       <a (click)="logout()" class="toggle__option" title="Log-out"
@@ -38,10 +46,7 @@
         >
       </li>
       <li *ngIf="logged">
-        <a
-          routerLink="./account"
-          class="toggle__option"
-          title="My Account"
+        <a routerLink="./account" class="toggle__option" title="My Account"
           ><i data-feather="user"></i>MY ACCOUNT</a
         >
       </li>
@@ -50,10 +55,29 @@
           ><i data-feather="log-out"></i>LOG-OUT</a
         >
       </li>
-      <li><a  routerLink="./" (click)="scrollTo('home')" class="toggle__option"><i data-feather="home"></i>HOME</a></li>
-      <li><a  routerLink="./" (click)="scrollTo('products')" class="toggle__option"><i data-feather="shopping-bag"></i>PRODUCTS</a></li>
-      <li><a  routerLink="about" (click)="scrollTo('about')" class="toggle__option"><i data-feather="info"></i>ABOUT</a></li>
-      <li><a  routerLink="home" (click)="scrollTo('contact')" class="toggle__option"><i data-feather="send"></i>CONTACT</a></li>
+      <li>
+        <a routerLink="./" (click)="scrollTo('home')" class="toggle__option"
+          ><i data-feather="home"></i>HOME</a
+        >
+      </li>
+      <li>
+        <a routerLink="./" (click)="scrollTo('products')" class="toggle__option"
+          ><i data-feather="shopping-bag"></i>PRODUCTS</a
+        >
+      </li>
+      <li>
+        <a routerLink="about" (click)="scrollTo('about')" class="toggle__option"
+          ><i data-feather="info"></i>ABOUT</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="home"
+          (click)="scrollTo('contact')"
+          class="toggle__option"
+          ><i data-feather="send"></i>CONTACT</a
+        >
+      </li>
     </ul>
   </nav>
 </div>

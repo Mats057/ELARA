@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
   error: string = '';
   constructor(private router: Router, private auth: AuthService) {}
 
-  async ngOnInit(): Promise<void> {
-    if (await this.verifyLogin()) {
-      this.router.navigate(['home']);
-    }
+  ngOnInit() {
+    //if (await this.verifyLogin()) {
+    //  this.router.navigate(['home']);
+    //}
   }
 
   switchRoute(route: string) {
