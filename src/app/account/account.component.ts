@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-account',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent {
+
+  constructor(private auth: AuthService) { }
+
+  logout() {
+    this.auth.logout();
+    window.location.reload();
+  }
 
 }

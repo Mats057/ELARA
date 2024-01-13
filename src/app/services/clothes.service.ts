@@ -5,20 +5,22 @@ import { HttpClient } from '@angular/common/http'; // Import the HttpClient modu
 import { take } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClothesService {
-
   private readonly API = environment.API; // Define API endpoint
 
-  constructor(private http: HttpClient) { } // Inject the HttpClient module
-
+  constructor(private http: HttpClient) {} // Inject the HttpClient module
 
   getClothes() {
-    return this.http.get<Clothes[]>(`${environment.API}listClothes.php`)
-    .pipe(
-      take(1)
-    )
-;
-}
+    return this.http
+      .get<Clothes[]>(`${environment.API}listClothes.php`)
+      .pipe(take(1));
+  }
+
+  getCloth(id: string) {
+    return this.http
+      .get<Clothes>(`${environment.API}getClothes.php?id=${id}`)
+      .pipe(take(1));
+  }
 }

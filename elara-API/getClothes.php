@@ -2,8 +2,7 @@
 include_once 'default.php';
 include_once 'dbConnect.php';
 
-$data = json_decode(file_get_contents("php://input"));
-$id = $data->id;
+$id = $_GET['id'];
 $sql = "SELECT * FROM clothes WHERE id = ?";
 if($stmt = $conn->prepare($sql)){
     $stmt->bind_param("s", $id);

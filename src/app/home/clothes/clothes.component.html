@@ -8,51 +8,30 @@
         [config]="swiperConfig"
         (slidechange)="slideChange($event)"
       >
-        <swiper-slide>
-          <!--<div class="picture">
-                    <img [src]="cloth.image[0]" alt="Product" />
-                </div>-->
+        <swiper-slide *ngFor="let image of cloth.images; let i = index">
           <div class="picture">
-            <img src="https://picsum.photos/600/900" alt="Product" />
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="picture">
-            <img src="https://picsum.photos/600/900" alt="Product" />
-          </div>
-        </swiper-slide>
-        <swiper-slide>
-          <div class="picture">
-            <img src="https://picsum.photos/600/900" alt="Product" />
+            <img [src]="cloth.images[i].path" alt="Product" />
           </div>
         </swiper-slide>
       </swiper-container>
     </div>
     <div class="infos">
       <div class="header">
-        <h1>Title</h1>
+        <h1>{{ cloth.name }}</h1>
         <h4>Sold and delivered by <span>Elara</span></h4>
       </div>
       <div class="content">
-        <h1 class="price">{{ 60 | currency : "USD" : "symbol" }}</h1>
+        <h1 class="price">{{ cloth.price * cloth.discount | currency : "USD" : "symbol" }}</h1>
         <div class="colors">
           <h3>Colors</h3>
           <div class="color">
-            <div class="color__item" style="background-color: #000000"></div>
-            <div class="color__item" style="background-color: #ffffff"></div>
-            <div class="color__item" style="background-color: #ff0000"></div>
-            <div class="color__item" style="background-color: #00ff00"></div>
-            <div class="color__item" style="background-color: #0000ff"></div>
+            <div *ngFor="let color of filteredColors; let i = index" class="color__item" [ngStyle]="{'background-color': color}" style="background-color: #000000"></div>
           </div>
         </div>
         <div class="sizes">
           <h3>Sizes</h3>
           <div class="size">
-            <div class="size__item">PP</div>
-            <div class="size__item">P</div>
-            <div class="size__item">M</div>
-            <div class="size__item">G</div>
-            <div class="size__item">GG</div>
+            <div class="size__item" *ngFor="let size of cloth.sizes">{{ size }}</div>
           </div>
         </div>
         <div class="actions">
@@ -76,29 +55,7 @@
   <div class="description">
     <h2>Description</h2>
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-      voluptatum, quibusdam, quia, voluptate voluptatem quod quos exercitationem
-      voluptatibus quas doloribus quidem. Quisquam voluptatum, quibusdam, quia,
-      voluptate voluptatem quod quos exercitationem voluptatibus quas doloribus
-      quidem. Quisquam voluptatum, quibusdam, quia, voluptate voluptatem quod
-      quos exercitationem voluptatibus quas doloribus quidem. Quisquam
-      voluptatum, quibusdam, quia, voluptate voluptatem quod quos exercitationem
-      voluptatibus quas doloribus quidem. Quisquam voluptatum, quibusdam, quia,
-      voluptate voluptatem quod quos exercitationem voluptatibus quas doloribus
-      quidem. Quisquam voluptatum, quibusdam, quia, voluptate voluptatem quod
-      quos exercitationem voluptatibus quas doloribus quidem. Quisquam
-      voluptatum, quibusdam, quia, voluptate voluptatem quod quos exercitationem
-      voluptatibus quas doloribus quidem. Quisquam voluptatum, quibusdam, quia,
-      voluptate voluptatem quod quos exercitationem voluptatibus quas doloribus
-      quidem. Quisquam voluptatum, quibusdam, quia, voluptate voluptatem quod
-      quos exercitationem voluptatibus quas doloribus quidem. Quisquam
-      voluptatum, quibusdam, quia, voluptate voluptatem quod quos exercitationem
-      voluptatibus quas doloribus quidem. Quisquam voluptatum, quibusdam, quia,
-      voluptate voluptatem quod quos exercitationem voluptatibus quas doloribus
-      quidem. Quisquam voluptatum, quibusdam, quia, voluptate voluptatem quod
-      quos exercitationem voluptatibus quas doloribus quidem. Quisquam
-      voluptatum, quibusdam, quia, voluptate voluptatem quod quos exercitationem
-      voluptatibus quas doloribus.
+          {{ cloth.description }}
     </p>
   </div>
 </div>
