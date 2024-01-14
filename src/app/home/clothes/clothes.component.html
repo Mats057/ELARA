@@ -21,34 +21,45 @@
         <h4>Sold and delivered by <span>Elara</span></h4>
       </div>
       <div class="content">
+        <form [formGroup]="options" (submit)="onSubmit()">
         <h1 class="price">{{ cloth.price * cloth.discount | currency : "USD" : "symbol" }}</h1>
         <div class="colors">
           <h3>Colors</h3>
           <div class="color">
-            <div *ngFor="let color of filteredColors; let i = index" class="color__item" [ngStyle]="{'background-color': color}" style="background-color: #000000"></div>
+            <div *ngFor="let color of filteredColors; let i = index" class="color__item">
+              <label for="color{{ i }}" [ngStyle]="{'background-color': color}" [ngClass]="{
+                'selected': color === selectedColor
+              }"></label>
+              <input type="radio" formControlName="color" id="color{{ i }}" class="hidden" (click)="selectColor(color)" [value]="color"/>
+            </div>
           </div>
         </div>
         <div class="sizes">
           <h3>Sizes</h3>
           <div class="size">
-            <div class="size__item" *ngFor="let size of cloth.sizes">{{ size }}</div>
+            <div  *ngFor="let size of cloth.sizes; let i = index;">
+              <label for="size{{ i }}" [ngClass]="{
+                'selected': size === selectedSize,
+                'size__item': true
+              }">{{ size }}</label>
+              <input type="radio" formControlName="size" id="size{{ i }}" class="hidden" (click)="selectSize(size)" [value]="size"/>
+            </div>
           </div>
         </div>
         <div class="actions">
-          <a href="#" class="btn buy"
-            ><i data-feather="shopping-cart"></i>Buy now</a
-          >
-          <a href="#" class="btn bag"
-            ><i data-feather="shopping-bag"></i>Add to bag</a
-          >
+          <button href="#" class="btn buy"
+            ><i data-feather="shopping-cart"></i>Buy now</button>
+          <button href="#" class="btn bag"
+            ><i data-feather="shopping-bag"></i>Add to bag</button>
         </div>
         <div class="zipcode">
           <h3>Check Shipping</h3>
           <div class="zipcode__item">
-            <input type="text" placeholder="Enter your Zip Code" />
-            <button class="btn">OK</button>
+            <input type="text" placeholder="Enter your Zip Code" maxlength="5" formControlName="zipCode"/>
+            <button class="btn" (click)="searchZip()">OK</button>
           </div>
         </div>
+      </form>
       </div>
     </div>
   </main>

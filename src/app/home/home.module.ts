@@ -11,6 +11,7 @@ import { ClothesComponent } from './clothes/clothes.component'
 import { SwiperDirective } from '../shared/swiper.directive';
 import { AboutComponent } from './about/about.component';
 import { MainComponent } from './main/main.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 register()
 
@@ -29,6 +30,7 @@ register()
     CommonModule,
     HomeRoutingModule,
     NgOptimizedImage,
+    ReactiveFormsModule,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
