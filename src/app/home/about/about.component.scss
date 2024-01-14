@@ -34,6 +34,14 @@
                 img {
                     object-fit: contain;
                 }
+                @media screen and (max-width: 1024px) {
+                    width: 90%;
+                    height: 30rem;
+                    
+                }
+                @media screen and (max-width: 768px) {
+                    height: 20rem;
+                }
             }
 
 
@@ -48,6 +56,10 @@
                 &.last {
                     animation: leftArrestAnimation 1s ease-in-out;
                     animation-timeline: scroll();
+                }
+                @media screen and (max-width: 1024px) {
+                    width: 90%;
+                    
                 }
             }
         }

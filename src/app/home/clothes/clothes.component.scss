@@ -28,7 +28,6 @@
                 width: 100%;
 
                 .picture {
-                    width: 100%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -42,10 +41,15 @@
                         flex-direction: column;
                         margin-top: 2rem;
                     }
-
+                    @media screen and (max-width: 860px) {
+                        width: 100%;
+                    }
                 }
             }
-
+            @media screen and (max-width: 860px) {
+                width: 100%;
+                max-width: 100%;
+            }
         }
 
         .infos {
@@ -57,7 +61,7 @@
             margin-top: 2rem;
 
             .header {
-                margin-bottom: 2rem;
+                margin-bottom: 1rem;
 
                 h1 {
                     font-size: 2rem;
@@ -71,6 +75,7 @@
                         font-weight: 600;
                     }
                 }
+
             }
 
             .price {
@@ -211,7 +216,15 @@
 
                 }
             }
+            @media screen and (max-width: 860px) {
+                width: 100%;
+                max-width: 100%;
+            }
 
+        }
+        @media screen and (max-width: 860px) {
+            flex-direction: column;
+            padding: 1rem 2rem;
         }
     }
 

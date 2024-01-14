@@ -1,5 +1,5 @@
 <header #header>
-  <div class="logo">ELARA</div>
+  <div class="logo" routerLink="home">ELARA</div>
   <nav>
     <ul>
       <li><a routerLink="./" (click)="scrollTo('home')">HOME</a></li>
@@ -40,24 +40,36 @@
 <div class="mobile-header" #mobileHeader [@popMenu]="menuState">
   <nav class="mobile-actions">
     <ul>
-      <li *ngIf="!logged">
+      <li>
+        <a routerLink="./" (click)="scrollTo('home')" class="toggle__option"
+          ><i data-feather="home"></i>HOME</a
+        >
+      </li>
+      <li
+        [ngClass]="{
+          hidden: logged | async
+        }"
+      >
         <a routerLink="/login" title="Sign-in" class="toggle__option"
           ><i data-feather="user"></i>SIGN-IN</a
         >
       </li>
-      <li *ngIf="logged">
+      <li
+        [ngClass]="{
+        hidden: (logged | async) === false,
+      }"
+      >
         <a routerLink="./account" class="toggle__option" title="My Account"
           ><i data-feather="user"></i>MY ACCOUNT</a
         >
       </li>
-      <li *ngIf="logged">
+      <li
+        [ngClass]="{
+        hidden: (logged | async) === false,
+      }"
+      >
         <a (click)="logout()" class="toggle__option" title="Log-out"
           ><i data-feather="log-out"></i>LOG-OUT</a
-        >
-      </li>
-      <li>
-        <a routerLink="./" (click)="scrollTo('home')" class="toggle__option"
-          ><i data-feather="home"></i>HOME</a
         >
       </li>
       <li>

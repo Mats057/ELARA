@@ -22,8 +22,7 @@ const popMenu = trigger('popMenu', [
   state(
     'inactive',
     style({
-      transform: 'translateY(-100%)',
-      opacity: 0,
+      transform: 'translateY(-150%)',
     })
   ),
   state(
@@ -33,7 +32,7 @@ const popMenu = trigger('popMenu', [
       opacity: 1,
     })
   ),
-  transition('* => active', animate('700ms ease-in')),
+  transition('* => active', animate('500ms ease-in')),
   transition('active => *', animate('700ms ease-out')),
 ]);
 @Component({

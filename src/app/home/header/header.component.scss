@@ -1,5 +1,6 @@
 header {
     display: flex;
+    position: relative;
     width: 100%;
     height: 5rem;
     background-color: rgb(255, 255, 255);
@@ -16,6 +17,7 @@ header {
         background-color: white;
         border-bottom: #a1a1a1 1px solid;
         animation: slideInFromTop 0.5s ease-in-out;
+        
     }
 
     .logo {
@@ -121,26 +123,27 @@ nav,
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 30vh;
+        height: 10rem;
         position: fixed;
         margin-top: calc(5rem - 1px);
         top: 0;
         left: 0;
         background-color: white;
-        z-index: 1;
+        z-index: 998;
     }
 
     .mobile-actions {
         width: 100%;
         height: 100%;
         display: flex;
-        align-items: flex-start;
         justify-content: center;
         
         ul{
+            width: 100%;
             list-style: none;
             display: grid;
-            grid-template-columns: 3fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            
             gap: 1rem;
             margin:1rem;
         }
