@@ -1,9 +1,18 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { ClothesService } from '../../services/clothes.service';
+import { MatDialog } from '@angular/material/dialog';
 import { SwiperOptions } from 'swiper/types';
 import * as feather from 'feather-icons';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ErrorComponent } from 'src/app/dialogs/error/error.component';
+
 
 @Component({
   selector: 'app-clothes',
@@ -14,6 +23,7 @@ export class ClothesComponent implements AfterViewInit, OnInit {
   clothID: string = this.activatedRoute.snapshot.paramMap.get('id')!;
   selectedColor: string = '';
   selectedSize: string = '';
+  error: string = '';
   cloth: any = {};
   loadingShipment: boolean = false;
   errorShipment: boolean = false;
@@ -27,13 +37,14 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     size: '',
     zipCode: '',
   });
-
   filteredColors: any[] = [];
+
 
   constructor(
     private clothesService: ClothesService,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog
   ) {}
 
   slideChange(swiper: any) {
@@ -50,6 +61,7 @@ export class ClothesComponent implements AfterViewInit, OnInit {
       },
       error: (error) => {
         console.error('There was an error!', error);
+        this.openDialog(error.message);
       },
     });
   }
@@ -112,4 +124,12 @@ export class ClothesComponent implements AfterViewInit, OnInit {
       id: this.clothID,
     });
   }
+
+  openDialog(error: string) {
+    this.dialog.open(ErrorComponent, {
+      data: error,
+      panelClass: 'error-dialog',
+    });
+  }
+
 }
