@@ -1,4 +1,3 @@
-
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ClothesService } from '../../services/clothes.service';
 import { SwiperOptions } from 'swiper/types';
@@ -16,12 +15,18 @@ export class ClothesComponent implements AfterViewInit, OnInit {
   selectedColor: string = '';
   selectedSize: string = '';
   cloth: any = {};
+  loadingShipment: boolean = false;
+  errorShipment: boolean = false;
+  zipCodeResult: any = {
+    days: '',
+    description: '',
+  };
   options: FormGroup = this.formBuilder.group({
-    id : '',
+    id: '',
     color: '',
     size: '',
     zipCode: '',
-    });;
+  });
 
   filteredColors: any[] = [];
 
@@ -39,7 +44,12 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     this.clothesService.getCloth(this.clothID).subscribe({
       next: (data) => {
         this.cloth = data;
-        this.filteredColors = [...new Set(this.cloth.images.map((item: any) => item.color))]
+        this.filteredColors = [
+          ...new Set(this.cloth.images.map((item: any) => item.color)),
+        ];
+      },
+      error: (error) => {
+        console.error('There was an error!', error);
       },
     });
   }
@@ -72,18 +82,27 @@ export class ClothesComponent implements AfterViewInit, OnInit {
 
   searchZip() {
     let value = this.options.value.zipCode;
+    this.zipCodeResult.price = '';
+    this.zipCodeResult.days = '';
+    this.loadingShipment = true;
+    this.errorShipment = false;
     console.log(value);
     this.clothesService.searchZipCode(value).subscribe({
       next: (data) => {
-        console.log(data);
-        console.log(data.results[value]);
-        if(data.results[value] == undefined){
-          alert('invalid Zip Code');
-        }else if(data.results[value]/100 < 2){
-          alert('Free Shipping');
-        }else{
-          alert('Shipping Cost: $' + data.results[value]/100);
+        this.loadingShipment = false;
+        if (data.results[value] / 100 < 3) {
+          this.zipCodeResult.days = '2-3';
+          this.zipCodeResult.price = 0;
+        } else {
+          this.zipCodeResult.days = `${Math.round(
+            data.results[value] / 200 - 2
+          )}-${Math.round(data.results[value] / 200)}`;
+          this.zipCodeResult.price = data.results[value] / 100;
         }
+      },
+      error: (error) => {
+        this.loadingShipment = false;
+        this.errorShipment = true;
       },
     });
   }
@@ -94,5 +113,3 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     });
   }
 }
-
-

@@ -22,51 +22,100 @@
       </div>
       <div class="content">
         <form [formGroup]="options" (submit)="onSubmit()">
-        <h1 class="price">{{ cloth.price * cloth.discount | currency : "USD" : "symbol" }}</h1>
-        <div class="colors">
-          <h3>Colors</h3>
-          <div class="color">
-            <div *ngFor="let color of filteredColors; let i = index" class="color__item">
-              <label for="color{{ i }}" [ngStyle]="{'background-color': color}" [ngClass]="{
-                'selected': color === selectedColor
-              }"></label>
-              <input type="radio" formControlName="color" id="color{{ i }}" class="hidden" (click)="selectColor(color)" [value]="color"/>
+          <h1 class="price">
+            {{ cloth.price * cloth.discount | currency : "USD" : "symbol" }}
+          </h1>
+          <div class="colors">
+            <h3>Colors</h3>
+            <div class="color">
+              <div
+                *ngFor="let color of filteredColors; let i = index"
+                class="color__item"
+              >
+                <label
+                  for="color{{ i }}"
+                  [ngStyle]="{ 'background-color': color }"
+                  [ngClass]="{
+                    selected: color === selectedColor
+                  }"
+                ></label>
+                <input
+                  type="radio"
+                  formControlName="color"
+                  id="color{{ i }}"
+                  class="hidden"
+                  (click)="selectColor(color)"
+                  [value]="color"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="sizes">
-          <h3>Sizes</h3>
-          <div class="size">
-            <div  *ngFor="let size of cloth.sizes; let i = index;">
-              <label for="size{{ i }}" [ngClass]="{
-                'selected': size === selectedSize,
-                'size__item': true
-              }">{{ size }}</label>
-              <input type="radio" formControlName="size" id="size{{ i }}" class="hidden" (click)="selectSize(size)" [value]="size"/>
+          <div class="sizes">
+            <h3>Sizes</h3>
+            <div class="size">
+              <div *ngFor="let size of cloth.sizes; let i = index">
+                <label
+                  for="size{{ i }}"
+                  [ngClass]="{
+                    selected: size === selectedSize,
+                    size__item: true
+                  }"
+                  >{{ size }}</label
+                >
+                <input
+                  type="radio"
+                  formControlName="size"
+                  id="size{{ i }}"
+                  class="hidden"
+                  (click)="selectSize(size)"
+                  [value]="size"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="actions">
-          <button href="#" class="btn buy"
-            ><i data-feather="shopping-cart"></i>Buy now</button>
-          <button href="#" class="btn bag"
-            ><i data-feather="shopping-bag"></i>Add to bag</button>
-        </div>
-        <div class="zipcode">
-          <h3>Check Shipping</h3>
-          <div class="zipcode__item">
-            <input type="text" placeholder="Enter your Zip Code" maxlength="5" formControlName="zipCode"/>
-            <button class="btn" (click)="searchZip()">OK</button>
+          <div class="actions">
+            <button href="#" class="btn buy">
+              <i data-feather="shopping-cart"></i>Buy now
+            </button>
+            <button href="#" class="btn bag">
+              <i data-feather="shopping-bag"></i>Add to bag
+            </button>
           </div>
-        </div>
-      </form>
+          <div class="zipcode">
+            <h3>Check Shipping</h3>
+            <div class="zipcode__item">
+              <input
+                type="text"
+                placeholder="Enter your Zip Code"
+                maxlength="5"
+                formControlName="zipCode"
+              />
+              <button class="btn" (click)="searchZip()" >OK</button>
+              <div class="zipcode__item__error" *ngIf="errorShipment">
+                <p>Enter a valid Zip Code</p>
+              </div>
+              <div class="zipcode__item__result" *ngIf="zipCodeResult.days == '' && loadingShipment">
+                <p>Loading...</p>
+              </div>
+              <div class="zipcode__item__result" *ngIf="zipCodeResult.days != '' && !loadingShipment">
+                <p>Delivery in <span>{{ zipCodeResult.days }}</span> days</p>
+                <p>
+                  Shipping cost: <span *ngIf="zipCodeResult.price>0">
+                  {{ zipCodeResult.price | currency : "USD" : "symbol" }}
+                </span>
+                  <span *ngIf="zipCodeResult.price==0">Free</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </main>
   <div class="description">
     <h2>Description</h2>
     <p>
-          {{ cloth.description }}
+      {{ cloth.description }}
     </p>
   </div>
 </div>

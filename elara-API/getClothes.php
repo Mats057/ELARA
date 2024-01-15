@@ -3,6 +3,10 @@ include_once 'default.php';
 include_once 'dbConnect.php';
 
 $id = $_GET['id'];
+if(!isset($id)){
+    http_response_code(400);
+    die();
+}
 $sql = "SELECT * FROM clothes WHERE id = ?";
 if($stmt = $conn->prepare($sql)){
     $stmt->bind_param("s", $id);
@@ -37,6 +41,7 @@ if($stmt = $conn->prepare($sql)){
         echo json_encode($clothes);
         http_response_code(200);
     } else {
+        echo json_encode(array('message' => 'No clothes found'));
         http_response_code(204);
     }
 }
