@@ -78,6 +78,7 @@ body {
   .mdc-dialog__container .mat-mdc-dialog-surface{
     padding: 1rem;
     background-color: #e57373;
-
+    border-radius: 8px;
+    min-width: 20vw;
   }
 }

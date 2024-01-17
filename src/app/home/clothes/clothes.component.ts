@@ -9,9 +9,10 @@ import { ClothesService } from '../../services/clothes.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SwiperOptions } from 'swiper/types';
 import * as feather from 'feather-icons';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ErrorComponent } from 'src/app/dialogs/error/error.component';
+import { take } from 'rxjs';
 
 
 @Component({
@@ -32,9 +33,9 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     description: '',
   };
   options: FormGroup = this.formBuilder.group({
-    id: '',
-    color: '',
-    size: '',
+    id: ['', [Validators.required]],
+    color: ['', [Validators.required]],
+    size: ['', [Validators.required]],
     zipCode: '',
   });
   filteredColors: any[] = [];
@@ -44,7 +45,8 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     private clothesService: ClothesService,
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   slideChange(swiper: any) {
@@ -129,6 +131,11 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     this.dialog.open(ErrorComponent, {
       data: error,
       panelClass: 'error-dialog',
+    });
+
+    this.dialog.afterAllClosed.subscribe(() => {
+      this.router.navigate(['/home']);
+      take(1);
     });
   }
 

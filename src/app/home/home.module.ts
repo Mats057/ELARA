@@ -15,6 +15,7 @@ import { MainComponent } from './main/main.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from '../dialogs/error/error.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ContactComponent } from './contact/contact.component';
 
 register()
 
@@ -28,6 +29,7 @@ register()
     SwiperDirective,
     AboutComponent,
     MainComponent,
+    ContactComponent,
   ],
   imports: [
     CommonModule,

@@ -24,8 +24,8 @@ export class ClothesService {
       .pipe(
         tap({
           next: (data) => {
-            if(data === null || data === undefined || (data as any).message == 'Cloth not found') {
-              throw new Error('Cloth not found');
+            if(data === null || data === undefined || (data as any).message == 'No clothes found') {
+              throw new Error('Clothing not found');
             }
           },
         }),

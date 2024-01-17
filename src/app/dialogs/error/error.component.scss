@@ -1,10 +1,32 @@
 h1 {
-    color: #f44336;
+    color: #b71c1c;
     margin-bottom:0.5rem;
+}
+
+.mat-dialog-content {
+    color: #b71c1c;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 .mat-dialog-actions {
     display: flex;
     justify-content: flex-end;
     margin-top: 0.5rem;
+    button {
+        padding: 0.5rem 1rem;
+        margin: 0;
+        border: 0;
+        color: #b71c1c;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        background-color: transparent;
+        
+        &:hover {
+            background-color: #ef5350;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+    }
 }

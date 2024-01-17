@@ -78,11 +78,30 @@ header {
 
     .actions {
         .toggle__option {
+            position: relative;
             margin: 0 0.5rem;
             cursor: pointer;
             color: black;
             &:hover {
                 transition: 0.3s;
+            }
+
+            .itensQuantity {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                position: absolute;
+                bottom: 0px;
+                right: -0.2rem;
+                background-color: red;
+                width: .8rem;
+                height: .8rem;
+                font-size: .6rem;
+                font-weight: 700;
+                color: white;
+                border-radius: 50%;
+                font-weight: 300;
             }
         }
     }
@@ -161,10 +180,11 @@ nav,
             &:hover {
                 transition: 0.3s;
             }
-
+            
             &:focus {
                 color: #535353;
             }
+        
         }
 
     }
