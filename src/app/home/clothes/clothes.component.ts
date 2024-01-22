@@ -63,7 +63,7 @@ export class ClothesComponent implements AfterViewInit, OnInit {
       },
       error: (error) => {
         console.error('There was an error!', error);
-        this.openDialog(error.message);
+        this.openError(error.message);
       },
     });
   }
@@ -127,7 +127,7 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     });
   }
 
-  openDialog(error: string) {
+  openError(error: string) {
     this.dialog.open(ErrorComponent, {
       data: error,
       panelClass: 'error-dialog',

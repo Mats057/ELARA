@@ -4,6 +4,8 @@ import { AccountRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
 import { GeneralComponent } from './general/general.component';
 import { SecurityComponent } from './security/security.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
 
@@ -15,7 +17,14 @@ import { SecurityComponent } from './security/security.component';
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
+  ],
+  providers: [
+    provideNgxMask()
   ]
 })
 export class AccountModule { }

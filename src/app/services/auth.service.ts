@@ -18,8 +18,12 @@ export class AuthService implements OnInit {
 
   ngOnInit(): void {}
 
-  getUsers() {
-    return this.http.get<User[]>(`${this.API}listUsers.php}`);
+  getUser(token: string) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    });
+    return this.http.get<User>(`${this.API}getUser.php`, { headers: headers }).pipe(take(1));
   }
 
   updateUsers() {
