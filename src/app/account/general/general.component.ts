@@ -17,15 +17,18 @@ export class GeneralComponent implements OnInit {
     firstName: '',
     lastName: '',
     email: '',
-    phone: ''
+    phone: '',
   });
+
+  loading: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     feather.replace();
@@ -33,7 +36,6 @@ export class GeneralComponent implements OnInit {
     if (token != null && token != undefined) {
       this.auth.getUser(token).subscribe({
         next: (data) => {
-          console.log(data);
           this.userForm.setValue({
             firstName: data.first_name,
             lastName: data.last_name,
@@ -61,5 +63,26 @@ export class GeneralComponent implements OnInit {
       this.router.navigate(['/login']);
       take(1);
     });
+  }
+
+  submit() {
+    this.loading = true;
+    let token = localStorage.getItem('token');
+    if (token != null && token != undefined) {
+      this.auth.updateUser(token, this.userForm.value).subscribe({
+        next: (data) => {
+          this.loading = false;
+          this.router
+            .navigateByUrl('/home/account', { skipLocationChange: true })
+            .then(() => this.router.navigate([this.router.url]));
+        },
+        error: (error) => {
+          console.error('There was an error!', error);
+          this.openError(error.message);
+        },
+      });
+    } else {
+      this.openError("You don't have permission!");
+    }
   }
 }

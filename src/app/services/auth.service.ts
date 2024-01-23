@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { User, UserLogin } from '../shared/user';
 import { HttpClient, HttpEvent, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map, take, tap } from 'rxjs';
+import { delay, map, take, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,12 +23,40 @@ export class AuthService implements OnInit {
       'Content-Type': 'application/json',
       'Authorization': token,
     });
-    return this.http.get<User>(`${this.API}getUser.php`, { headers: headers }).pipe(take(1));
+    return this.http.get<User>(`${this.API}getUser.php`, { headers: headers }).pipe(
+      tap({
+        next: (data: User) => {
+          if(!data){
+            throw new Error(data['message']);
+          }
+        },
+      }),
+      take(1));
   }
 
-  updateUsers() {
-    //this.db = JSON.stringify(this.users);
-    //localStorage.setItem('infos', this.db);
+  updateUser(token: string, infos: User) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    });
+    console.log(infos);
+    return this.http.put(`${this.API}updateUser.php`, infos, { headers: headers, observe: 'response',
+  })
+  .pipe(
+    tap({
+      next: (data: HttpResponse<any>) => {
+        if (data.body['message'] == 'User updated' && data.status == 200) {
+          let token: string = (data as HttpResponse<any>).headers.get(
+            'Authorization'
+          )!;
+          localStorage.setItem('token', token);
+        }else{
+          throw new Error(data.body['message']);
+        }
+      },
+    }),
+    take(1)
+  );
   }
 
   createAccount(infos: User) {

@@ -38,7 +38,7 @@
                 color: #636363;
                 align-items: center;
                 font-weight: 500;
-                font-size: 1rem;
+                font-size: 0.95rem;
                 border-radius: 10px;
                 border: 1px solid #ccc;
                 padding: 0.4rem 0.9rem 0.4rem 0.7rem;
@@ -89,11 +89,54 @@
                     color: #e6e6e6;
                 }
 
+                .save, .loadingDiv{
+                    display: flex;
+                    align-items: center;
+                }
+
+
+                .loading {
+                    animation: loading 1s infinite linear;
+                }
+
                 svg {
                     margin-right: 2px;
                     padding: 0.2rem;
+
                 }
             }
         }
     }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+    
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden{
+    display: none;
 }

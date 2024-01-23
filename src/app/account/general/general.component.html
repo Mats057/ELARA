@@ -1,29 +1,73 @@
 <div class="container">
   <form [formGroup]="userForm">
     <div class="infos">
-    <div class="divInput name">
-      <label for="name">First Name</label>
-      <input type="text" id="name" name="name" maxlength="30" placeholder="Name" formControlName="firstName"/>
-    </div>
-    <div class="divInput lastName">
-      <label for="name">Last Name</label>
-      <input type="text" id="lastName" name="name" maxlength="30" placeholder="Name" formControlName="lastName"/>
-    </div>
-    <div class="divInput email">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" maxlength="255" placeholder="Email" formControlName="email"/>
-    </div>
-    <div class="divInput phone">
-      <label for="phone">Phone</label>
-      <input type="tel" id="phone" name="phone" mask='(000) 000-0000' placeholder="Phone" formControlName="phone"/>
-    </div>
-    <div class="divInput address">
+      <div class="divInput name">
+        <label for="name">First Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          maxlength="30"
+          placeholder="Name"
+          formControlName="firstName"
+        />
+      </div>
+      <div class="divInput lastName">
+        <label for="name">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          name="name"
+          maxlength="30"
+          placeholder="Name"
+          formControlName="lastName"
+        />
+      </div>
+      <div class="divInput email">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          maxlength="255"
+          placeholder="Email"
+          formControlName="email"
+        />
+      </div>
+      <div class="divInput phone">
+        <label for="phone">Phone</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          mask="(000) 000-0000"
+          placeholder="Phone"
+          formControlName="phone"
+        />
+      </div>
+      <div class="divInput address">
         <label for="adress">Password</label>
         <a routerLink="./security"><i data-feather="key"></i>Change password</a>
+      </div>
     </div>
-  </div>
     <div class="submit">
-      <button><i data-feather="save"></i>Save Settings</button>
+      <button (click)="submit()">
+        <div
+          [ngClass]="{
+          'hidden': loading,
+          'save': !loading,
+        }"
+        >
+          <i data-feather="save"></i>
+        </div>
+        <div
+          [ngClass]="{
+          'hidden': !loading,
+          'loadingDiv': loading,
+        }"
+        ><i data-feather="loader" class="loading"></i></div>
+        Save Settings
+      </button>
     </div>
   </form>
 </div>
