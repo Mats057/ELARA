@@ -39,7 +39,6 @@ export class AuthService implements OnInit {
       'Content-Type': 'application/json',
       'Authorization': token,
     });
-    console.log(infos);
     return this.http.put(`${this.API}updateUser.php`, infos, { headers: headers, observe: 'response',
   })
   .pipe(
@@ -61,7 +60,6 @@ export class AuthService implements OnInit {
 
   createAccount(infos: User) {
     let data = JSON.stringify(infos);
-    console.log(data);
     return this.http
       .post(`${this.API}createUser.php`, data, { headers: this.headers })
       .pipe(take(1));
@@ -90,6 +88,22 @@ export class AuthService implements OnInit {
         }),
         take(1)
       );
+  }
+
+  deleteUser(token: string) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    });
+    return this.http.delete(`${this.API}deleteUser.php`, { headers: headers }).pipe(
+      tap({
+        next: (data: any) => {
+          if(data.message != 'User deleted'){
+            throw new Error(data['message']);
+          }
+        },
+      }),
+      take(1));
   }
 
   logout() {

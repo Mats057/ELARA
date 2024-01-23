@@ -45,12 +45,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
-
-
-function getToken()
-{
-    $headers = getallheaders();
-    $bearerToken = $headers['Authorization'];
-    $bearerToken = str_replace('Bearer ', '', $bearerToken);
-    return $bearerToken;
-}

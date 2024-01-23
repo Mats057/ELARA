@@ -23,10 +23,10 @@ if($resultUser->num_rows > 0){
         echo json_encode(array("message" => "Login realizado com sucesso!"));
         http_response_code(200);
     } else {
-        echo json_encode(array("message" => "Senha incorreta!"));
+        echo json_encode(array("message" => "Email/Password incorrect!"));
         http_response_code(200);
     }
 } else {
-    echo json_encode(array("message" => "Usuário não encontrado!"));
+    echo json_encode(array("message" => "Email/Password incorrect!"));
     http_response_code(200);
 }

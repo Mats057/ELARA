@@ -66,11 +66,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
 }
 
 
-
-function getToken()
-{
-    $headers = getallheaders();
-    $bearerToken = $headers['Authorization'];
-    $bearerToken = str_replace('Bearer ', '', $bearerToken);
-    return $bearerToken;
-}

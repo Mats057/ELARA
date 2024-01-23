@@ -85,4 +85,5 @@ export class GeneralComponent implements OnInit {
       this.openError("You don't have permission!");
     }
   }
+
 }
