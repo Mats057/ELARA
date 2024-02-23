@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="quantity">
-        <button class="decrease">-</button>
+        <button class="decrease">+</button>
         <input type="text" value="1" />
-        <button class="increase">+</button>
+        <button class="increase">-</button>
     </div>
   </div>
   <div class="cart__item">
@@ -20,18 +20,41 @@
     <div class="infos">
       <p>Product Name</p>
       <p>Price: $100.00</p>
+      <p>Size: PP</p>
+      <div class="colorContainer">
+        <p class="colorP">Color: </p><div class="color" [style.background-color]="" style="background-color: blue;"></div>
+      </div>
     </div>
     <div class="quantity">
-        <button class="decrease">-</button>
+        <button class="decrease">+</button>
         <input type="text" value="1" />
-        <button class="increase">+</button>
+        <button class="increase">-</button>
+    </div>
+  </div>
+  <div class="cart__item">
+    <img src="assets/clothes-img/one.jpg" alt="Product" />
+    <div class="infos">
+      <p>Product Name</p>
+      <p>Price: $100.00</p>
+      <p>Size: PP</p>
+      <div class="colorContainer">
+        <p class="colorP">Color: </p><div class="color" [style.background-color]="" style="background-color: blue;"></div>
+      </div>
+    </div>
+    <div class="quantity">
+        <button class="decrease">+</button>
+        <input type="text" value="1" />
+        <button class="increase">-</button>
     </div>
   </div>
   <div class="actions">
-    <a routerLink="/checkout" class="toggle__option" title="Checkout"
-      >Checkout</a
+    <div class="total">
+      <p>Total: $300.00</p>
+    </div>
+    <a class="cleanCart" title="View Cart"
+    ><i data-feather="trash-2"></i><span>Clean Cart</span></a>
+    <a class="checkoutCart" title="Checkout"
+      ><i data-feather="shopping-cart"></i><span>Checkout</span></a
     >
-    <a routerLink="/cart" class="toggle__option" title="View Cart"
-      >Clean Cart</a>
   </div>
 </div>

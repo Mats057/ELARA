@@ -24,11 +24,13 @@
         hidden: (logged | async) === false,
       }"
     >
-      <a class="toggle__option" id="cartToggle" title="Cart"
+      <a class="toggle__option" (click)="toggleCart()" id="cartToggle" title="Cart"
         ><i data-feather="shopping-bag"></i>
         <div class="itensQuantity">5</div>
       </a>
-      <app-cart></app-cart>
+      <app-cart [ngClass]="{
+        'hidden': !cartView,
+      }"></app-cart>
       <a routerLink="./account" class="toggle__option" title="My Account"
         ><i data-feather="user"></i
       ></a>

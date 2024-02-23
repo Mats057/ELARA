@@ -10,7 +10,6 @@ import {
   Component,
   ElementRef,
   HostListener,
-  Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -44,6 +43,7 @@ const popMenu = trigger('popMenu', [
 export class HeaderComponent implements OnInit {
   logged: Promise<boolean> = this.verifyLogin();
   menuState: string = 'inactive';
+  cartView: boolean = false;
   @ViewChild('header') header!: ElementRef;
   @ViewChild('toggleIcon') toggleIcon!: ElementRef;
   @ViewChild('mobileHeader') mobileHeader!: ElementRef;
@@ -123,5 +123,9 @@ export class HeaderComponent implements OnInit {
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  toggleCart(){
+    this.cartView = !this.cartView;
   }
 }
