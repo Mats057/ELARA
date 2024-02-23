@@ -8,6 +8,16 @@
     right: 0.5rem;
     border-radius: 0.25rem;
 
+    .emptyCart{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        font-weight: 500;
+    }
+
     .cart__item{
         display: flex;
         align-items: center;
@@ -20,6 +30,7 @@
             height: 7rem;
         }
         .infos{
+            margin-right: 2rem;
             .colorContainer{
                 display: flex;
                 .color{
@@ -32,6 +43,8 @@
 
         .quantity{
             display: flex;
+            position: absolute;
+            right: 1.5rem;
             flex-direction: column;
             align-items: center;
             justify-content: center;

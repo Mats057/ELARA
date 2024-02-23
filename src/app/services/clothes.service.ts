@@ -46,4 +46,18 @@ export class ClothesService {
         }),
         take(1));
   }
+
+  addToBag(clothID: string, color: string, size: string) {
+    let bagJSON = JSON.parse(localStorage.getItem('bag') || '[]');
+    if(bagJSON.length > 0) {
+      for (let i = 0; i < bagJSON.length; i++) {
+        if(bagJSON[i].id == clothID && bagJSON[i].color == color && bagJSON[i].size == size) {
+          return 'This item is already in your bag';
+        }
+      }
+    }
+    bagJSON.push({ id: clothID, color: color, size: size, quantity: 1});
+    localStorage.setItem('bag', JSON.stringify(bagJSON));
+    return 'Item added to bag';
+  }
 }

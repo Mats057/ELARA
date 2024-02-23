@@ -26,7 +26,7 @@
     >
       <a class="toggle__option" (click)="toggleCart()" id="cartToggle" title="Cart"
         ><i data-feather="shopping-bag"></i>
-        <div class="itensQuantity">5</div>
+        <div class="itensQuantity">{{ cartQuantity }}</div>
       </a>
       <app-cart [ngClass]="{
         'hidden': !cartView,

@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit {
   logged: Promise<boolean> = this.verifyLogin();
   menuState: string = 'inactive';
   cartView: boolean = false;
+  cartQuantity: number = 0;
   @ViewChild('header') header!: ElementRef;
   @ViewChild('toggleIcon') toggleIcon!: ElementRef;
   @ViewChild('mobileHeader') mobileHeader!: ElementRef;
@@ -55,6 +56,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(){
+    if(localStorage.getItem('bag') != null){
+      let bag = JSON.parse(localStorage.getItem('bag')!);
+      this.cartQuantity = bag.length;
+    }
   }
 
   async ngAfterViewInit() {

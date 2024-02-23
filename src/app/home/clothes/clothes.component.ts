@@ -139,4 +139,17 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     });
   }
 
+  addToBag() {
+    if (this.selectedColor === '' || this.selectedSize === '') {
+      alert('Please select a color and a size');
+      return;
+    }
+    let result = this.clothesService.addToBag(this.clothID, this.selectedColor, this.selectedSize)
+    if (result === 'This item is already in your bag') {
+      alert(result);
+      return;
+    }
+
+    location.reload();
+  }
 }

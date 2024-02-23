@@ -1,55 +1,24 @@
 <div class="cart">
-  <div class="cart__item">
-    <img src="assets/clothes-img/one.jpg" alt="Product" />
+  <div class="emptyCart" *ngIf="clothes.length < 1">Empty Bag. Add itens to continue</div>
+  <div class="cart__item" *ngFor="let cloth of clothes; let i = index ">
+    <img [src]="cloth.image" alt="Product" />
     <div class="infos">
-      <p>Product Name</p>
-      <p>Price: $100.00</p>
-      <p>Size: PP</p>
+      <p>{{ cloth.name }}</p>
+      <p>Price: {{ cloth.price | currency : "USD" : "symbol" }}</p>
+      <p>Size: {{ cloth.size }}</p>
       <div class="colorContainer">
-        <p class="colorP">Color: </p><div class="color" [style.background-color]="" style="background-color: blue;"></div>
+        <p class="colorP">Color: </p><div class="color" [style.background-color]="cloth.color"></div>
       </div>
     </div>
     <div class="quantity">
-        <button class="decrease">+</button>
-        <input type="text" value="1" />
-        <button class="increase">-</button>
-    </div>
-  </div>
-  <div class="cart__item">
-    <img src="assets/clothes-img/one.jpg" alt="Product" />
-    <div class="infos">
-      <p>Product Name</p>
-      <p>Price: $100.00</p>
-      <p>Size: PP</p>
-      <div class="colorContainer">
-        <p class="colorP">Color: </p><div class="color" [style.background-color]="" style="background-color: blue;"></div>
-      </div>
-    </div>
-    <div class="quantity">
-        <button class="decrease">+</button>
-        <input type="text" value="1" />
-        <button class="increase">-</button>
-    </div>
-  </div>
-  <div class="cart__item">
-    <img src="assets/clothes-img/one.jpg" alt="Product" />
-    <div class="infos">
-      <p>Product Name</p>
-      <p>Price: $100.00</p>
-      <p>Size: PP</p>
-      <div class="colorContainer">
-        <p class="colorP">Color: </p><div class="color" [style.background-color]="" style="background-color: blue;"></div>
-      </div>
-    </div>
-    <div class="quantity">
-        <button class="decrease">+</button>
-        <input type="text" value="1" />
-        <button class="increase">-</button>
+        <button class="decrease" (click)="changeQuantity(i,'add')">+</button>
+        <input type="text" [value]="cloth.quantity" />
+        <button class="increase" (click)="changeQuantity(i,'decrease')">-</button>
     </div>
   </div>
   <div class="actions">
     <div class="total">
-      <p>Total: $300.00</p>
+      <p>Total: {{ total | currency : "USD" : "symbol" }}</p>
     </div>
     <a class="cleanCart" title="View Cart"
     ><i data-feather="trash-2"></i><span>Clean Cart</span></a>
