@@ -112,13 +112,33 @@ header {
     display: none;
 
     @media screen and (max-width: 768px) {
-        display: block;
+        display: flex;
         position: absolute;
         top: 2rem;
         right: 2rem;
         cursor: pointer;
         z-index: 999;
+        gap: 1rem;
 
+        
+        .itensQuantity {
+            display: flex;
+            user-select: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            bottom: 0px;
+            right: 2.2rem;
+            background-color: red;
+            width: .8rem;
+            height: .8rem;
+            font-size: .6rem;
+            font-weight: 700;
+            color: white;
+            border-radius: 50%;
+            font-weight: 300;
+        }
     }
 }
 

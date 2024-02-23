@@ -56,10 +56,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(){
-    if(localStorage.getItem('bag') != null){
-      let bag = JSON.parse(localStorage.getItem('bag')!);
-      this.cartQuantity = bag.length;
-    }
+    this.reloadQuantity();
   }
 
   async ngAfterViewInit() {
@@ -132,5 +129,15 @@ export class HeaderComponent implements OnInit {
 
   toggleCart(){
     this.cartView = !this.cartView;
+    this.reloadQuantity();
+  }
+
+  reloadQuantity(){
+    if(localStorage.getItem('bag') != null){
+      let bag = JSON.parse(localStorage.getItem('bag')!);
+      this.cartQuantity = bag.length;
+    }else{
+      this.cartQuantity = 0;
+    }
   }
 }

@@ -17,9 +17,9 @@ export class CartComponent implements OnInit{
       this.clothService.getCloth(this.clothes[i].id).subscribe({
         next: (data) => {
           this.clothes[i].name = data.name;
-          this.clothes[i].price = data.price;
+          this.clothes[i].price = (data.price * data.discount);
           this.clothes[i].image = data.images[0].path;
-          this.total += data.price * this.clothes[i].quantity;
+          this.total += this.clothes[i].price * this.clothes[i].quantity;
         },
       });
     }
@@ -46,6 +46,12 @@ export class CartComponent implements OnInit{
   removeItem(index: number) {
     this.clothes.splice(index, 1);
     localStorage.setItem('bag', JSON.stringify(this.clothes));
+  }
+
+  cleanCart() {
+    localStorage.removeItem('bag');
+    this.clothes = [];
+    this.total = 0;
   }
 
 }

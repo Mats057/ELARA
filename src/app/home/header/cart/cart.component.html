@@ -12,7 +12,7 @@
     </div>
     <div class="quantity">
         <button class="decrease" (click)="changeQuantity(i,'add')">+</button>
-        <input type="text" [value]="cloth.quantity" />
+        <input type="text" [value]="cloth.quantity" disabled/>
         <button class="increase" (click)="changeQuantity(i,'decrease')">-</button>
     </div>
   </div>
@@ -20,7 +20,7 @@
     <div class="total">
       <p>Total: {{ total | currency : "USD" : "symbol" }}</p>
     </div>
-    <a class="cleanCart" title="View Cart"
+    <a class="cleanCart" (click)="cleanCart()" title="View Cart"
     ><i data-feather="trash-2"></i><span>Clean Cart</span></a>
     <a class="checkoutCart" title="Checkout"
       ><i data-feather="shopping-cart"></i><span>Checkout</span></a

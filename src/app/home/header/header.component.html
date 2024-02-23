@@ -24,13 +24,19 @@
         hidden: (logged | async) === false,
       }"
     >
-      <a class="toggle__option" (click)="toggleCart()" id="cartToggle" title="Cart"
+      <a
+        class="toggle__option"
+        (click)="toggleCart()"
+        id="cartToggle"
+        title="Cart"
         ><i data-feather="shopping-bag"></i>
         <div class="itensQuantity">{{ cartQuantity }}</div>
       </a>
-      <app-cart [ngClass]="{
+      <app-cart
+        [ngClass]="{
         'hidden': !cartView,
-      }"></app-cart>
+      }"
+      ></app-cart>
       <a routerLink="./account" class="toggle__option" title="My Account"
         ><i data-feather="user"></i
       ></a>
@@ -39,9 +45,25 @@
       ></a>
     </div>
   </div>
-  <div class="toggle" #toggleIcon (click)="toggleMenu()">
-    <i data-feather="menu"></i>
-    <i data-feather="x" class="hidden"></i>
+  <div class="toggle">
+    <div class="cartMobile">
+      <a
+      class="toggle__option"
+      (click)="toggleCart()"
+      id="cartToggle"
+      title="Cart"
+      ><i data-feather="shopping-bag"></i>
+      <div class="itensQuantity">{{ cartQuantity }}</div>
+      <app-cart
+      [ngClass]="{
+      'hidden': !cartView,
+    }"
+    ></app-cart>
+    </a>
+    </div>
+    <div class="toggleMenu" (click)="toggleMenu()" #toggleIcon>
+      <i data-feather="menu"></i> <i data-feather="x" class="hidden"></i>
+    </div>
   </div>
 </header>
 <div class="mobile-header" #mobileHeader [@popMenu]="menuState">
