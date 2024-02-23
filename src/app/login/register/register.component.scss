@@ -98,6 +98,10 @@ section {
       align-items: center;
       justify-content: center;
 
+      .returnHome{
+        display: none;
+      }
+
       .form {
         width: 50%;
         display: flex;
@@ -254,6 +258,18 @@ section {
 
       @media screen and (max-width: 768px) {
         width: 100%;
+
+        .returnHome{
+          display: flex;
+          position: absolute;
+          top: 0.5rem;
+          left: 0.5rem;
+          a{
+            font-family: "Poppins", sans-serif;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+          }
+        }
       }
     }
 
