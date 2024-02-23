@@ -1,0 +1,33 @@
+.cart{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: white;
+    margin-top: 0.5rem;
+    right: 0.5rem;
+    border-radius: 0.25rem;
+
+    .cart__item{
+        display: flex;
+        align-items: center;
+        margin: 0 1rem 1rem 1rem;
+        padding: 1rem;
+        gap: 1rem;
+        border-bottom: 1px solid #e0e0e0;
+        img{
+            width: 4.8rem;
+            height: 7rem;
+        }
+        .infos{
+            .colorContainer{
+                display: flex;
+                .color{
+                    width: 2rem;
+                    margin: 0.2rem;
+                    border: #e0e0e0 1px solid;
+                }
+            }
+        }
+    }
+
+}

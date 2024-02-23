@@ -109,10 +109,13 @@ export class HeaderComponent implements OnInit {
 
   scrollTo(element: any) {
     element = document.getElementById(element);
+    this.toggleMenu();
+    if (element === null) {
+      return;
+    }
     if (element.offsetTop > 80) {
       this.header.nativeElement.classList.add('sticky');
       element.scrollIntoView({ behavior: 'smooth' });
-      this.toggleMenu();
     } else {
       this.scrollToTop();
     }

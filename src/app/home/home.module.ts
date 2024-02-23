@@ -16,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorComponent } from '../dialogs/error/error.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ContactComponent } from './contact/contact.component';
+import { CartComponent } from './header/cart/cart.component';
 
 register()
 
@@ -30,6 +31,7 @@ register()
     AboutComponent,
     MainComponent,
     ContactComponent,
+    CartComponent,
   ],
   imports: [
     CommonModule,
