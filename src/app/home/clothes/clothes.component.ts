@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ErrorComponent } from 'src/app/dialogs/error/error.component';
 import { take } from 'rxjs';
+import { AlertComponent } from 'src/app/dialogs/alert/alert.component';
 
 
 @Component({
@@ -139,14 +140,24 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     });
   }
 
+  openAlert(alert: string, title?: string) {
+    this.dialog.open(AlertComponent, {
+      data: {
+        message: alert,
+        title: title? title : 'Alert',
+      },
+      panelClass: 'alert-dialog',
+    });
+  }
+
   addToBag() {
     if (this.selectedColor === '' || this.selectedSize === '') {
-      alert('Please select a color and a size');
+      this.openAlert('Please select a color and a size', 'Missing information');
       return;
     }
     let result = this.clothesService.addToBag(this.clothID, this.selectedColor, this.selectedSize)
     if (result === 'This item is already in your bag') {
-      alert(result);
+      this.openAlert(result, 'Duplicate item');
       return;
     }
 

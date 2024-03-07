@@ -6,12 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ConfirmComponent } from './dialogs/confirm/confirm.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoadingComponent,
-    ConfirmComponent,
   ],
   imports: [
     BrowserModule,

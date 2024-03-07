@@ -82,3 +82,11 @@ body {
     min-width: 20vw;
   }
 }
+
+.alert-dialog{
+    .mdc-dialog__container .mat-mdc-dialog-surface{
+      padding: 1rem;
+      border-radius: 8px;
+      min-width: 20vw;
+    }
+}

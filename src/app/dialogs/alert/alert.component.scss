@@ -1,0 +1,28 @@
+h1 {
+    margin-bottom:0.5rem;
+}
+
+.mat-dialog-content {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+    button {
+        padding: 0.5rem 1rem;
+        margin: 0;
+        border: 0;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        background-color: transparent;
+        
+        &:hover {
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+}
