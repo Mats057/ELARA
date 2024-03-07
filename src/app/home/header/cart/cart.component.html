@@ -3,12 +3,14 @@
   <div class="cart__item" *ngFor="let cloth of clothes; let i = index ">
     <img [src]="cloth.image" alt="Product" />
     <div class="infos">
-      <p>{{ cloth.name }}</p>
-      <p>Price: {{ cloth.price | currency : "USD" : "symbol" }}</p>
-      <p>Size: {{ cloth.size }}</p>
-      <div class="colorContainer">
-        <p class="colorP">Color: </p><div class="color" [style.background-color]="cloth.color"></div>
+      <p class="clothName">{{ cloth.name }}</p>
+      <div class="clothInfos">
+        <p>Size: <b>{{ cloth.size }}</b></p>
+        <div class="colorContainer">
+          <p class="colorP">Color: </p><div class="color" [style.background-color]="cloth.color"></div>
+        </div>
       </div>
+      <p class="price">{{ cloth.price | currency : "USD" : "symbol" }}</p>
     </div>
     <div class="quantity">
         <button class="decrease" (click)="changeQuantity(i,'add')">+</button>
@@ -22,7 +24,7 @@
     </div>
     <a class="cleanCart" (click)="cleanCart()" title="View Cart"
     ><i data-feather="trash-2"></i><span>Clean Cart</span></a>
-    <a class="checkoutCart" title="Checkout"
+    <a class="checkoutCart" title="Checkout" routerLink="/cart"
       ><i data-feather="shopping-cart"></i><span>Checkout</span></a
     >
   </div>

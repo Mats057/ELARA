@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartCheckoutComponent } from './checkouts/cart-checkout/cart-checkout.component';
+import { authGuard } from './guards/auth.guard';
+import { cartGuard } from './guards/cart.guard';
 
 const routes: Routes = [
   {
@@ -11,6 +14,9 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
   },
+  { path: 'cart', component: CartCheckoutComponent, canActivate: [authGuard, cartGuard]},
+  { path: 'checkout', component: CartCheckoutComponent },
+  { path: 'checkout/:id', component: CartCheckoutComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 ];
