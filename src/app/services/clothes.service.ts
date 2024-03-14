@@ -18,7 +18,7 @@ export class ClothesService {
       .pipe(take(1));
   }
 
-  getCloth(id: string) {
+  getCloth(id: number) {
     return this.http
       .get<Clothes>(`${environment.API}getClothes.php?id=${id}`)
       .pipe(
@@ -47,7 +47,7 @@ export class ClothesService {
         take(1));
   }
 
-  addToBag(clothID: string, color: string, size: string) {
+  addToBag(clothID: number, color: string, size: string) {
     let bagJSON = JSON.parse(localStorage.getItem('bag') || '[]');
     if(bagJSON.length > 0) {
       for (let i = 0; i < bagJSON.length; i++) {

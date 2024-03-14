@@ -10,7 +10,7 @@
           <p class="colorP">Color: </p><div class="color" [style.background-color]="cloth.color"></div>
         </div>
       </div>
-      <p class="price">{{ cloth.price | currency : "USD" : "symbol" }}</p>
+      <p class="price">{{ cloth.price * cloth.discount | currency : "USD" : "symbol" }}</p>
     </div>
     <div class="quantity">
         <button class="decrease" (click)="changeQuantity(i,'add')">+</button>

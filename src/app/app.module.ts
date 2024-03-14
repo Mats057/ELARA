@@ -8,6 +8,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartCheckoutComponent } from './checkouts/cart-checkout/cart-checkout.component';
 import { OneItemComponent } from './checkouts/one-item/one-item.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ErrorComponent } from './dialogs/error/error.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { OneItemComponent } from './checkouts/one-item/one-item.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule,
+    ErrorComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

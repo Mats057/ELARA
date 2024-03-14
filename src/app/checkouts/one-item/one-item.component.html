@@ -1,1 +1,62 @@
-<p>one-item works!</p>
+<div class="container" *ngIf="!isLoading"><header>
+    <p [routerLink]="['/home/clothes', id]">Cancel</p>
+    <h3>Checkout</h3>
+    <p>Next</p>
+</header>
+<main>
+    <h2>Item</h2>
+    <div class="checkout-item">
+        <div class="checkout-item-image">
+            <img [src]="item.images[0].path" alt="{{ item.name }}">
+        </div>
+        <div class="checkout-item-details">
+            <div class="infos">
+                <p class="clothName">{{ item.name }}</p>
+                <div class="clothInfos">
+                  <p>Size: <b>{{ selectedSize }}</b></p>
+                  <div class="colorContainer">
+                    <p class="colorP">Color: </p><div class="color" [style.background-color]="selectedColor"></div>
+                  </div>
+                </div>
+                <p class="price">{{ item.price * item.discount| currency : "USD" : "symbol" }}</p>
+              </div>
+              <div class="quantity">
+                  <button class="increase" (click)="changeQuantity('decrease')">-</button>
+                  <input type="text" [value]="quantity" disabled/>
+                  <button class="decrease" (click)="changeQuantity('add')">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="checkout-form">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group"></div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" required>
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" required>
+            </div>
+        </form>
+    </div>
+</main>
+</div>

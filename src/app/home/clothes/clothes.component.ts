@@ -2,8 +2,6 @@ import {
   AfterViewInit,
   Component,
   OnInit,
-  TemplateRef,
-  ViewChild,
 } from '@angular/core';
 import { ClothesService } from '../../services/clothes.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,7 +20,7 @@ import { AlertComponent } from 'src/app/dialogs/alert/alert.component';
   styleUrls: ['./clothes.component.scss'],
 })
 export class ClothesComponent implements AfterViewInit, OnInit {
-  clothID: string = this.activatedRoute.snapshot.paramMap.get('id')!;
+  clothID: number = Number(this.activatedRoute.snapshot.paramMap.get('id')!);
   selectedColor: string = '';
   selectedSize: string = '';
   error: string = '';
@@ -148,6 +146,14 @@ export class ClothesComponent implements AfterViewInit, OnInit {
       },
       panelClass: 'alert-dialog',
     });
+  }
+
+  goToCheckout() {
+    if (this.selectedColor === '' || this.selectedSize === '') {
+      this.openAlert('Please select a color and a size', 'Missing information');
+      return;
+    }
+    this.router.navigate(['/checkout', {id:this.clothID, color: this.selectedColor, size: this.selectedSize}]);
   }
 
   addToBag() {
