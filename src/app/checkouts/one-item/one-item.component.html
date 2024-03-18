@@ -84,7 +84,7 @@
           </div>
           <div class="form-group">
             <label for="zip">Zip</label>
-            <input type="text" id="zip" name="zip" formControlName="zipcode" required />
+            <input type="text" id="zip" name="zip" formControlName="zipCode" (change)="searchZip()" required />
           </div>
         </form>
       </div>
@@ -103,13 +103,16 @@
         </div>
         <div class="checkout-total-item">
           <p>Shipping</p>
-          <p>Free</p>
+          <p *ngIf="errorShipment">Enter a valid Zip Code</p>
+          <p *ngIf="zipCodeResult.price>0">{{ zipCodeResult.price | currency : "USD" : "symbol" }}</p>
+          <p *ngIf="!zipCodeResult.price && zipCodeResult.price!=0">--</p>
+          <p *ngIf="zipCodeResult.price==0 && !errorShipment">Free</p>
         </div>
         <div class="checkout-total-item">
           <p>Total</p>
           <p>
             {{
-              item.price * item.discount * quantity
+              item.price * item.discount * quantity + zipCodeResult.price
                 | currency : "USD" : "symbol"
             }}
           </p>
