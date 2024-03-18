@@ -10,6 +10,7 @@ import { CartCheckoutComponent } from './checkouts/cart-checkout/cart-checkout.c
 import { OneItemComponent } from './checkouts/one-item/one-item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ErrorComponent } from './dialogs/error/error.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ErrorComponent } from './dialogs/error/error.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ErrorComponent
+    ErrorComponent,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
