@@ -1,4 +1,3 @@
-import { ViewportRuler } from '@angular/cdk/scrolling';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,7 +8,6 @@ import { ErrorComponent } from 'src/app/dialogs/error/error.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClothesService } from 'src/app/services/clothes.service';
 import { Clothes } from 'src/app/shared/clothes';
-import { FormValidations } from 'src/app/shared/form-validations';
 
 @Component({
   selector: 'app-one-item',
@@ -204,7 +202,7 @@ export class OneItemComponent implements OnInit {
   }
 
   cancel(){
-    this.router.navigate(['/home']);
+    history.back();
   }
 }
 

@@ -73,8 +73,12 @@ export class ClothesService {
         }
       }
     }
-    bagJSON.push({ id: clothID, color: color, size: size, quantity: 1});
+    bagJSON.push({ id: clothID , color: color, size: size, quantity: 1});
     localStorage.setItem('bag', JSON.stringify(bagJSON));
     return 'Item added to bag';
+  }
+
+  getCart(){
+    return JSON.parse(localStorage.getItem('bag') || '[]');
   }
 }
