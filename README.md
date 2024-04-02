@@ -12,7 +12,6 @@
 - Gerenciamento da conta
 - Sistema fictício de venda
 - Sistema de desconto dinâmico
-<br>
 
 # 🖥️Jornada do FRONT-END🖥️
 
@@ -22,15 +21,15 @@
 
 O angular foi o framework principal para a criação do sistema, dês da estruturação, conexão com o Back-end até o design.
 
-Esse projeto me possibilitou a familiarização de diversos conceitos importantíssimos e surpreendentes do framework, como Componentes, POO (Classes, Serviços, Interfaces, Herança etc.), Guards, Roteamento, NgFor, ngIF, Pipes, Formulários reativos e muuuito mais.
+Esse projeto me possibilitou a familiarização de diversos conceitos importantíssimos e surpreendentes do framework, como **Componentes, POO (Classes, Serviços, Interfaces, Herança etc.), Guards, Roteamento, NgFor, ngIF, Pipes, Formulários reativos** e muuuito mais.
 
 ### TypeScript
 
-Já o typescript foi a linguagem principal para a criação da lógica de programação e as regras de negócio, com ele eu consegui juntar minha prévia experiência com JavaScript e acrescentar a **tipagem de variáveis** existente na linguagem, além das interfaces, classes e etc já ditas acima. Além disso, junto ao angular e ao RXJS, utilizei de observadores e outras funções para a conexão com o banco de dados.
+Já o typescript foi a linguagem principal para a criação da lógica de programação e as regras de negócio, com ele eu consegui juntar minha prévia experiência com JavaScript e acrescentar a **tipagem de variáveis** existente na linguagem, além das interfaces, classes e etc já ditas acima. Além disso, junto ao angular e ao ***RXJS***, utilizei de observadores e outras funções para a conexão com o banco de dados.
 
 ### SCSS
 
-O SCSS foi responsáveis por toda a estilização do site, o diferencial dele para o CSS, os estilos aninhados e as variáveis mais dinâmicas facilitaram muito o desenvolvimento da identidade visual do site.
+O SCSS foi responsáveis por toda a estilização do site, o diferencial dele para o CSS, os **estilos aninhados e as variáveis mais dinâmicas** facilitaram muito o desenvolvimento da identidade visual do site.
 
 ### Feather Icons
 
