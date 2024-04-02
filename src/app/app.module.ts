@@ -11,6 +11,7 @@ import { OneItemComponent } from './checkouts/one-item/one-item.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ErrorComponent } from './dialogs/error/error.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatDialogModule,
     ErrorComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
-  providers: [],
+  providers: [
+    provideEnvironmentNgxMask()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

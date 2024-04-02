@@ -99,8 +99,7 @@ export class ClothesComponent implements AfterViewInit, OnInit {
     this.zipCodeResult.days = '';
     this.loadingShipment = true;
     this.errorShipment = false;
-    console.log(value);
-    this.clothesService.searchZipCode(value).subscribe({
+    this.clothesService.compareDistance(value).subscribe({
       next: (data) => {
         this.loadingShipment = false;
         if (data.results[value] / 100 < 3) {

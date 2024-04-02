@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs';
+import { take, zip } from 'rxjs';
+import { AlertComponent } from 'src/app/dialogs/alert/alert.component';
 import { ErrorComponent } from 'src/app/dialogs/error/error.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClothesService } from 'src/app/services/clothes.service';
 import { Clothes } from 'src/app/shared/clothes';
+import { FormValidations } from 'src/app/shared/form-validations';
 
 @Component({
   selector: 'app-one-item',
@@ -29,13 +31,24 @@ export class OneItemComponent implements OnInit {
     description: '',
   };
   shipping: FormGroup = this.formBuilder.group({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    state: '',
-    zipCode: '',
+    name: ['',  [Validators.required],],
+    email: ['',  [Validators.required, Validators.email],],
+    phone: ['',  [Validators.required],],
+    address: ['',  [Validators.required],],
+    city: ['',  [Validators.required],],
+    state: ['',  [Validators.required],],
+    zipCode: ['',  [Validators.required, Validators.maxLength(5)]],
+  });
+
+  card: FormGroup = this.formBuilder.group({
+    cardNumber: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(16)],
+    ],
+    cardName: ['', [Validators.required, Validators.maxLength(16)],
+    ],
+    cardDate: ['', [Validators.required, Validators.maxLength(6), Validators.minLength(5)],
+    ],
+    cardCVV: ['', [Validators.required, Validators.maxLength(3), Validators.minLength(3)],
+    ],
   });
 
   constructor(
@@ -57,7 +70,6 @@ export class OneItemComponent implements OnInit {
     if (this.id !== null) {
       this.getCloth(this.id);
       this.total = this.item.price * this.quantity * this.item.discount;
-      console.log(this.item);
     } else {
       this.openError('Clothing not found');
     }
@@ -87,6 +99,14 @@ export class OneItemComponent implements OnInit {
     });
   }
 
+  openAlert(message: string, title: string) {
+    this.dialog.open(AlertComponent, {
+      data: { message: message,
+      title: title},
+      panelClass: 'alert-dialog',
+    });
+  }
+
   changeQuantity(action: string) {
     if (action === 'add') {
       this.quantity++;
@@ -105,8 +125,7 @@ export class OneItemComponent implements OnInit {
     this.zipCodeResult.days = '';
     this.loadingShipment = true;
     this.errorShipment = false;
-    console.log(value);
-    this.cloth.searchZipCode(value).subscribe({
+    this.cloth.compareDistance(value).subscribe({
       next: (data) => {
         this.loadingShipment = false;
         if (data.results[value] / 100 < 3) {
@@ -124,9 +143,31 @@ export class OneItemComponent implements OnInit {
         this.errorShipment = true;
       },
     });
+    this.cloth.searchZipCode(value).subscribe({
+      next: (data) => {
+        data = data.results[value];
+        data = data[0];
+        console.log(data);
+        this.shipping.patchValue({
+          city: data.city,
+          state: data.state,
+        });
+      },
+      error: (error) => {
+        this.errorShipment = true;
+        this.openAlert('Please enter a valid ZipCode', 'Invalid ZipCode');
+      },
+    });
   }
 
-  verifyInfos() {}
+  verifyInfos() {
+    console.log(this.shipping, this.card)
+    if (this.shipping.valid && this.card.valid && this.zipCodeResult.price !== '' && this.errorShipment !== true ) {
+      this.openAlert('Your order has been placed', 'Order Placed');
+    } else {
+      this.openAlert('Please fill all the fields', 'Invalid Information');
+    } 
+  }
 
   getInfos() {
     let token = localStorage.getItem('token');

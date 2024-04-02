@@ -9,6 +9,7 @@ import { take, tap } from 'rxjs';
 })
 export class ClothesService {
   private readonly API = environment.API; // Define API endpoint
+  private readonly ZIPKEY = environment.ZipAPI; // Define ZipAI endpoint
 
   constructor(private http: HttpClient) {} // Inject the HttpClient module
 
@@ -33,15 +34,31 @@ export class ClothesService {
 
   }
 
-  searchZipCode(zipCode: any) {
+  compareDistance(zipCode: any) {
     return this.http
-      .get<any>(`https://api.zipcodestack.com/v1/distance?code=22201&compare=${zipCode}&country=us&unit=km&apikey=01HM45E2BPQEMY36N50DSJQX15`)
+      .get<any>(`https://api.zipcodestack.com/v1/distance?code=22201&compare=${zipCode}&country=us&unit=km&apikey=${this.ZIPKEY}`)
       .pipe(
         tap({
           next: (data) => {
             if(data.results[zipCode] == undefined || data.results[zipCode] == null) {
               throw new Error('Zip Code not found');
             }
+          },
+        }),
+        take(1));
+  }
+
+  searchZipCode(zipCode: any) {
+    return this.http
+      .get<any>(`https://api.zipcodestack.com/v1/search?codes=${zipCode}&country=us&apikey=${this.ZIPKEY}`)
+      .pipe(
+        tap({
+          next: (data) => {
+            data = data.results[zipCode]
+            if(data == undefined || data == null) {
+              throw new Error('Zip Code not found');
+            }
+            return data[0];
           },
         }),
         take(1));
