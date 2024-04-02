@@ -1,3 +1,4 @@
+import { ViewportRuler } from '@angular/cdk/scrolling';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -45,7 +46,7 @@ export class OneItemComponent implements OnInit {
     ],
     cardName: ['', [Validators.required, Validators.maxLength(16)],
     ],
-    cardDate: ['', [Validators.required, Validators.maxLength(6), Validators.minLength(5)],
+    cardDate: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(3)],
     ],
     cardCVV: ['', [Validators.required, Validators.maxLength(3), Validators.minLength(3)],
     ],
@@ -163,10 +164,9 @@ export class OneItemComponent implements OnInit {
   verifyInfos() {
     console.log(this.shipping, this.card)
     if (this.shipping.valid && this.card.valid && this.zipCodeResult.price !== '' && this.errorShipment !== true ) {
-      this.openAlert('Your order has been placed', 'Order Placed');
-    } else {
-      this.openAlert('Please fill all the fields', 'Invalid Information');
+      return true;
     } 
+    return false;
   }
 
   getInfos() {
@@ -186,4 +186,25 @@ export class OneItemComponent implements OnInit {
       });
     }
   }
+
+  aplicaErro(form: 'shipping' | 'card', nome: string){
+    if(this[form].get(nome)?.invalid && this[form].get(nome)?.touched){
+      return {
+        'has-error': true
+      }
+    }
+    return {}
+  }
+
+  finish(){
+    if(this.verifyInfos()){
+      this.openAlert('Your purchase was successful', 'Success');
+      this.router.navigate(['/home']);
+    }
+  }
+
+  cancel(){
+    this.router.navigate(['/home']);
+  }
 }
+
