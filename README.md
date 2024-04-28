@@ -52,8 +52,38 @@ O Feather foi a biblioteca de ícones escolhidas por mim, por conta de sua ampla
 
 #  👨🏽‍💻Jornada do Back-end👨🏽‍💻
 
-EM BREVE
-
 ## 1. Principais tecnologias
 
+### PHP
+
+Utilizei o PHP como linguagem de programação para o Back-end, com ele criei rotas para criação, edição e listagem de roupas e usuários.
+
+<a href="https://documenter.getpostman.com/view/32208091/2sA3BuW8hb"><b>Clique aqui para ver a documentação no Postman🌐 - EM ANDAMENTO</b></a>
+
+### JWT
+
+Com o JWT(JSON Web Tokens), eu fiz o sistema de verificação de sessão, integrando o back-end com o sistema de login.
+
+### MySQL
+
+O MySQL foi o DB utilizado para esse projeto, junto a linguagem SQL e o PHP, fiz inserções, alterações e exclusões nesse banco de dados. Ele ficou responsável por armazenar roupas e usuários.
+
+### PHPMyAdmin
+
+Como SGBD(Sistema genrenciador de banco de dados) utilizei o PHPMyAdmin, com ele criei a estrutura do banco de dados e pude ver o funcionamento do sistema de forma facilitada.
+
 ## 2. Principais desafios
+
+- ### Novas tecnologias
+
+    > Esse projeto foi a minha primeira vez utilizando o JWT, portanto eu tive que aprender sobre o funcionamento dela de forma mais aprofundada. Além disso, como a utilização de Angular + PHP não é tão comum, tive que reforçar meus conhecimentos sobre Web para fazer essa junção de forma satisfatória.
+
+- ### CORS
+    > Para o funcionamento do sistema, também tive que aprender de forma mais aprofundada sobre o CORS e suas permissões.
+
+- ### Segurança
+    > Implementei alguns conhecimentos no Back-End para prevenir falhas de segurança como SQL Injection.
+
+## Deploy
+
+EM BREVE
