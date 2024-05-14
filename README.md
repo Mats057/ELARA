@@ -86,4 +86,6 @@ Como SGBD(Sistema genrenciador de banco de dados) utilizei o PHPMyAdmin, com ele
 
 ## Deploy
 
-EM BREVE
+<p>Utilizei a InfinityFree para realizar o deploy do meu banco de dados MySQL, do back-end PHP e o Front-end com Angular. Nele, por meio da conexão FTP, transferi os arquivos e configurei o servidor apache, além disso instalei o certificado SSL para ter a conexão HTTPS ativada.</p>
+
+### <a href="https://elara.infinityfreeapp.com/">Link do deploy🌐</a>
