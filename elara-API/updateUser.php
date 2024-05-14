@@ -8,8 +8,8 @@ header("Access-Control-Allow-Methods: PUT");
 use \Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
-    $_PUT = json_decode(file_get_contents('php://input'), true);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $_POST = json_decode(file_get_contents('php://input'), true);
     try {
         $token = getToken();
     } catch (Exception $e) {
@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
         exit();
     }
 
-    $newEmail = $_PUT['email'];
-    $newFirstName = $_PUT['firstName'];
-    $newLastName = $_PUT['lastName'];
-    $newPhone = $_PUT['phone'];
+    $newEmail = $_POST['email'];
+    $newFirstName = $_POST['firstName'];
+    $newLastName = $_POST['lastName'];
+    $newPhone = $_POST['phone'];
 
 
     $tokenData = json_decode(json_encode($tokenData), true);

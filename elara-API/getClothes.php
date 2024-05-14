@@ -38,7 +38,7 @@ if($stmt = $conn->prepare($sql)){
             $clothes['sizes'][] = $row['size'];
         }
         $stmt->close();
-        echo json_encode($clothes);
+        echo json_encode($clothes, JSON_INVALID_UTF8_IGNORE);
         http_response_code(200);
     } else {
         echo json_encode(array('message' => 'No clothes found'));

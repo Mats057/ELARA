@@ -39,7 +39,7 @@ export class AuthService implements OnInit {
       'Content-Type': 'application/json',
       'Authorization': token,
     });
-    return this.http.put(`${this.API}updateUser.php`, infos, { headers: headers, observe: 'response',
+    return this.http.post(`${this.API}updateUser.php`, infos, { headers: headers, observe: 'response',
   })
   .pipe(
     tap({

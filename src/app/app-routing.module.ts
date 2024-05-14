@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'cart', component: CartCheckoutComponent, canActivate: [authGuard, cartGuard]},
   { path: 'checkout', component: OneItemComponent, canActivate: [authGuard]},
   { path: 'checkout/:id', component: OneItemComponent, canActivate: [authGuard]},
+  { path: 'elara-API/**', redirectTo: 'home', pathMatch: 'full' },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'home' },
 ];
