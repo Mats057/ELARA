@@ -195,6 +195,11 @@ section {
             }
         }
 
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+            margin-bottom: 1rem;
+        }
+
     }
 
     .itemContainer,

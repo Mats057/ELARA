@@ -146,7 +146,6 @@ export class OneItemComponent implements OnInit {
       next: (data) => {
         data = data.results[value];
         data = data[0];
-        console.log(data);
         this.shipping.patchValue({
           city: data.city,
           state: data.state,
@@ -160,7 +159,6 @@ export class OneItemComponent implements OnInit {
   }
 
   verifyInfos() {
-    console.log(this.shipping, this.card)
     if (this.shipping.valid && this.card.valid && this.zipCodeResult.price !== '' && this.errorShipment !== true ) {
       return true;
     } 
